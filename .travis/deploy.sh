@@ -15,6 +15,7 @@ mkdir public
 
 # copy required files
 cp ./examples/index.html ./public/index.html
+cp ./examples/notie.css ./public/notie.css
 npm run build:examples && cp ./examples/bundle.js ./public/bundle.js
 
 cd public
