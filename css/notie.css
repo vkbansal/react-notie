@@ -1,0 +1,44 @@
+.react-notie {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    display: inline-block;
+    font-size: 14px;
+    color: #fff;
+    background: #333;
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.1);
+    border: solid 1px rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    transform: translate(0, -106%);
+    pointer-events: none;
+    transition: transform 0.3s ease-in-out;
+    margin: 0 auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+    .react-notie.react-notie--active {
+        transform: translate(0, 0);
+        pointer-events: auto;
+    }
+
+    .react-notie.react-notie-level--success {
+        background-color:  #13ce66;
+    }
+
+    .react-notie.react-notie-level--error {
+        background-color:  #ff4949;
+    }
+
+    .react-notie.react-notie-level--warn {
+        background-color: #f5be4b;
+    }
+
+    .react-notie.react-notie-level--info {
+        background-color: #20a0ff;
+    }
+
+}

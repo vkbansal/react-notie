@@ -1,0 +1,65 @@
+{
+  "name": "react-notie",
+  "version": "0.1.0",
+  "description": "Simple notification, input and selection suite for react",
+  "main": "index.js",
+  "scripts": {
+    "eslint": "eslint ./src ./examples",
+    "jest": "jest --no-cache --verbose --coverage",
+    "jest:dev": "jest --watchAll --no-cache --verbose --coverage",
+    "test": "npm run eslint && npm run jest",
+    "clean": "rimraf ./dist && rimraf ./modules && rimraf ./es6",
+    "dist": "webpack --progress --profile --colors",
+    "modules": "cross-env BABEL_ENV=es5 babel src --out-dir modules",
+    "modules:es6": "cross-env BABEL_ENV=es6 babel src --out-dir es6",
+    "build": "npm run clean && npm run test && npm run dist && npm run modules && npm run modules:es6",
+    "build:examples": "webpack --progress --profile --colors --config webpack.examples.config.js",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vkbansal/react-notie.git"
+  },
+  "keywords": [
+    "notification",
+    "confirm",
+    "alert",
+    "toast",
+    "notify"
+  ],
+  "author": "Vivek Kumar Bansal <contact@vkbansal.me>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vkbansal/react-notie/issues"
+  },
+  "homepage": "https://github.com/vkbansal/react-notie#readme",
+  "peerDependencies": {
+    "react": "^0.14.0 || ^15.0.0",
+    "react-dom": "^0.14.0 || ^15.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-core": "^6.24.0",
+    "babel-eslint": "^7.2.0",
+    "babel-jest": "^19.0.0",
+    "babel-loader": "^6.4.1",
+    "babel-plugin-transform-class-properties": "^6.23.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-env": "^1.2.2",
+    "babel-preset-react": "^6.23.0",
+    "cross-env": "^3.2.4",
+    "eslint": "^3.18.0",
+    "eslint-config-vkbansal": "^5.0.0",
+    "eslint-import-resolver-webpack": "^0.8.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-react": "^6.10.3",
+    "jest": "^19.0.2",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "rimraf": "^2.6.1",
+    "webpack": "^2.2.1"
+  },
+  "dependencies": {
+    "classnames": "^2.2.5"
+  }
+}

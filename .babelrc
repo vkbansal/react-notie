@@ -1,0 +1,53 @@
+{
+    "presets": [
+        "react"
+    ],
+    "env": {
+        "es6": {
+            "presets": [
+                 [
+                    "env",
+                    {
+                        "modules": false,
+                        "targets": {
+                            "browsers": "Edge >= 12, FireFox >= 38, Chrome >= 47, Opera >= 34, Safari >= 9"
+                        }
+                    }
+                ]
+            ],
+            "plugins": [
+                "transform-class-properties"
+            ]
+        },
+        "es5": {
+            "presets": [
+                 [
+                    "env",
+                    {
+                        "targets": {
+                            "browsers": "Edge >= 12, FireFox >= 38, Chrome >= 47, Opera >= 34, Safari >= 9"
+                        }
+                    }
+                ]
+            ],
+            "plugins": [
+                "transform-class-properties"
+            ]
+        },
+        "test": {
+            "presets": [
+                [
+                    "env",
+                    {
+                        "targets": {
+                            "browsers": "last 2 Chrome versions"
+                        }
+                    }
+                ]
+            ],
+            "plugins": [
+                "transform-class-properties"
+            ]
+        }
+    }
+}

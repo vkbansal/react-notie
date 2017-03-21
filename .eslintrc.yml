@@ -1,0 +1,5 @@
+---
+  extends:
+    - vkbansal
+    - vkbansal/react
+  parser: babel-eslint
