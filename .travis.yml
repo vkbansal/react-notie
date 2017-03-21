@@ -1,12 +1,12 @@
 language: node_js
 node_js:
-  - 7
+- 7
 after_success:
-  - npm run coveralls
+- npm run coveralls
 script:
-    - npm test
-    - bash ./.travis/deploy.sh
+- npm test
+- bash ./.travis/deploy.sh
 env:
   global:
-    - GITHUB_REPO: vkbansal/react-notie
-    - secure:  "qJiEWuE8BuFx5Rzx7ZBvQ1bHGChkZjkDQo13szIA3GMRojB72aPGDDj2f4jKaik0THEdIFz2nryjVHlsWoG2DToUiFUneEue5S0Si7ZToF55ntFAZmyporvYHhS4+LE4/lFYkcnDBr2Sc62FG4ILRkRf+QN0hhM9hw0uHjF810XSZRLBKG3COb/qM9psJr0eS4V5YaUngp4e3pmeanygspOUoB2dwfqp8d7jIPNCMYw8Doyw8kUzJyT6WgxgSGgyf62nK/gFu+ZkzGYzI7kMHMQh8Qn7usdKoMqiE1CqrzhOQLvZnnQTeBLzyz06IxiDKW8srf17phsECx0K+BfmZh1vzOrkbjBqynhFkuuSX5FjPGAuBHEhOB7+NVSyKXYStcORxhSWirJp1OlMF89zrD07uOH1vIS/mU4cL4hTzr5a8W8ckrYcTaaTQzjxZNqcXJqFL2vxb3JN3lTP0oHV8shhN6k1wpe869nRJUy/uSHSHP+O7b9meEuu+nnZs6/LyERzXyIH8h4/FLQGSAqKOTTilwaN7QUd8/bix0WMAj41AMUWRHlHI09uU0T4K3Q9WS7rc74I+GZMDcRlzWS+fLR/8vJshl12CIq+R/zciP2TUKnEAyl6/pJ/7akwIH4w3Vi6p2LA3M4Ih8QvuVWn5fwNtSFGNYszIVmRgvTIYfo="
+  - GITHUB_REPO: vkbansal/react-notie
+  - secure: gH2A1Vs19xnmnI69xOA188EmhwjUtJbLLUDpWMqt21UgtuvNDRGzTmGGi2Zv5UMppIYlqZ/jTn6w66x6LC7ddZkxNcoHfwGONTmnaXmCFUmaZwUITbots0gbd1PFHk4x97TPOwYRW6LUL8FVkesK0oIHfUv2jmlb6T/rztDF2DNpkCtV6MJaAkt0SjN/QD5eTnA+vjrR5hoW488sgrMurOS+Tz1WoI153GIWbdVfIxOwtPpAWX81tGpAgMJgJgKf5lBPaaVPfUq+DC6cr2HLVEfaalYBc5F8IwbaSPeQYJBC98HkNiOwyrrwwDAPa5C6FuDUBUHzeJMKDIx+oUqSjd0iKW9l7VUFmJ1KMTdolH8KydvqfPm19UcDAdXw77n6XLQiY4wTOsWL0aLYsYlg4xvEhpqmIso1voO2GTsgVWVOc+1WjgNpagHLYUC60ekpAOdmhNtkpSW4RGBm/odHW2jpDVh8HLGstqTKkoqM2BWd7VBpgqObLc3FkzflSLsgp3mZoIRPWUjOXiAblHOvtYZ7cBPsSmjq391BBU2ZCwbRP5bSmp+0CA+76s6a7rkZrHIQEPyORJ5uEGCXZGPdUEcN5VSarZhpIk1Yy6gdF4JMHfOk1DR14RmcapDjFS41YGP6hpV7yzoeWAY1lc/sWCJeNJ7A4mhEjh3ZFEaF/ms=
