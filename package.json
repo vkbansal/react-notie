@@ -1,6 +1,6 @@
 {
   "name": "react-notie",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Simple notification, input and selection suite for react",
   "main": "index.js",
   "scripts": {
