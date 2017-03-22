@@ -18,27 +18,43 @@ class NotieExamples extends Component {
 
     handleInfo = () => this.props.notie.info('Info!');
 
+    handleConfirm = () => {
+        this.props.notie.confirm('Are You sure?')
+            .then(() => this.props.notie.success('You selected yes!'))
+            .catch(() => this.props.notie.error('You selected no!'));
+    }
+
+    handleConfirmCustom = () => {
+        this.props.notie.confirm('Are You sure?', {
+            yesBtnText: 'Hell Ya!',
+            noBtnText: 'Abort!'
+        }).then(() => this.props.notie.success('You selected yeah!'))
+            .catch(() => this.props.notie.error('You selected abort!'));
+    }
+
     render() {
         return (
-            <div className='container'>
-                <h1>react-notie</h1>
-                <p>Simple notifications for react</p>
-                <br />
-                <p>Demo:</p>
-                <div>
-                    <button onClick={this.handleSuccess}>
-                        Success
-                    </button>
-                    <button onClick={this.handleWarn}>
-                        Warn
-                    </button>
-                    <button onClick={this.handleError}>
-                        Error
-                    </button>
-                    <button onClick={this.handleInfo}>
-                        Info
-                    </button>
-                </div>
+            <div>
+                <button className='button-success pure-button' onClick={this.handleSuccess}>
+                    Success
+                </button>
+                <button className='button-warning pure-button' onClick={this.handleWarn}>
+                    Warn
+                </button>
+                <button className='button-error pure-button' onClick={this.handleError}>
+                    Error
+                </button>
+                <button className='button-info pure-button' onClick={this.handleInfo}>
+                    Info
+                </button>
+
+                <button className='button-secondary pure-button' onClick={this.handleConfirm}>
+                    Confirm
+                </button>
+
+                <button className='button-secondary pure-button' onClick={this.handleConfirmCustom}>
+                    Confirm with custom button texts
+                </button>
             </div>
         );
     }

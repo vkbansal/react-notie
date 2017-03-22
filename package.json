@@ -48,18 +48,36 @@
     "babel-preset-env": "^1.2.2",
     "babel-preset-react": "^6.23.0",
     "cross-env": "^3.2.4",
+    "enzyme": "^2.7.1",
+    "enzyme-to-json": "^1.5.0",
     "eslint": "^3.18.0",
     "eslint-config-vkbansal": "^5.0.0",
     "eslint-import-resolver-webpack": "^0.8.1",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-react": "^6.10.3",
     "jest": "^19.0.2",
+    "jsdom": "^9.12.0",
     "react": "^15.4.2",
+    "react-addons-test-utils": "^15.4.2",
     "react-dom": "^15.4.2",
     "rimraf": "^2.6.1",
     "webpack": "^2.2.1"
   },
   "dependencies": {
     "classnames": "^2.2.5"
+  },
+  "jest": {
+    "setupFiles": [
+      "<rootDir>/tests/.setup.js"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "roots": [
+      "<rootDir>/tests"
+    ],
+    "collectCoverageFrom": [
+      "**/src/**/*.js"
+    ]
   }
 }

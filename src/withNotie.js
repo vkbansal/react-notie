@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import notieContextShape from './context-shape';
 
 function getDisplayName(WrappedComponent) {
-    return WrappedComponent.displayName || WrappedComponent.name || 'Component';
+    return WrappedComponent.displayName || WrappedComponent.name || /* istanbul ignore next */ 'Component';
 }
 
 export default function withToast(WrappedComponent) {

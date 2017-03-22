@@ -1,0 +1,419 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Notie /> confirm Custom button text 1`] = `
+<Notie>
+  <div
+    className="react-notie react-notie-level--confirm react-notie--active"
+  >
+    <div
+      className="react-notie-overlay"
+    />
+    <div
+      className="react-notie-container"
+    >
+      <div
+        className="react-notie-message"
+      >
+        Are you sure?
+      </div>
+      <div
+        className="react-notie-choices"
+      >
+        <div
+          className="react-notie-choice react-notie-choice--yes"
+          onClick={[Function]}
+        >
+          Hell Yeah!
+        </div>
+        <div
+          className="react-notie-choice react-notie-choice--no"
+          onClick={[Function]}
+        >
+          Fuck NO!
+        </div>
+      </div>
+    </div>
+  </div>
+</Notie>
+`;
+
+exports[`<Notie /> confirm click no 1`] = `
+<Notie>
+  <div
+    className="react-notie react-notie-level--confirm"
+  >
+    <div
+      className="react-notie-overlay"
+    />
+    <div
+      className="react-notie-container"
+    >
+      <div
+        className="react-notie-message"
+      >
+        Are you sure?
+      </div>
+      <div
+        className="react-notie-choices"
+      >
+        <div
+          className="react-notie-choice react-notie-choice--yes"
+          onClick={[Function]}
+        >
+          Yes
+        </div>
+        <div
+          className="react-notie-choice react-notie-choice--no"
+          onClick={[Function]}
+        >
+          No
+        </div>
+      </div>
+    </div>
+  </div>
+</Notie>
+`;
+
+exports[`<Notie /> confirm click yes 1`] = `
+<Notie>
+  <div
+    className="react-notie react-notie-level--confirm"
+  >
+    <div
+      className="react-notie-overlay"
+    />
+    <div
+      className="react-notie-container"
+    >
+      <div
+        className="react-notie-message"
+      >
+        Are you sure?
+      </div>
+      <div
+        className="react-notie-choices"
+      >
+        <div
+          className="react-notie-choice react-notie-choice--yes"
+          onClick={[Function]}
+        >
+          Yes
+        </div>
+        <div
+          className="react-notie-choice react-notie-choice--no"
+          onClick={[Function]}
+        >
+          No
+        </div>
+      </div>
+    </div>
+  </div>
+</Notie>
+`;
+
+exports[`<Notie /> confirm initial render 1`] = `
+<Notie>
+  <div
+    className="react-notie react-notie-level--confirm react-notie--active"
+  >
+    <div
+      className="react-notie-overlay"
+    />
+    <div
+      className="react-notie-container"
+    >
+      <div
+        className="react-notie-message"
+      >
+        Are you sure?
+      </div>
+      <div
+        className="react-notie-choices"
+      >
+        <div
+          className="react-notie-choice react-notie-choice--yes"
+          onClick={[Function]}
+        >
+          Yes
+        </div>
+        <div
+          className="react-notie-choice react-notie-choice--no"
+          onClick={[Function]}
+        >
+          No
+        </div>
+      </div>
+    </div>
+  </div>
+</Notie>
+`;
+
+exports[`<Notie /> confirm no consecutive calls 1`] = `
+<Notie>
+  <div
+    className="react-notie react-notie-level--confirm react-notie--active"
+  >
+    <div
+      className="react-notie-overlay"
+    />
+    <div
+      className="react-notie-container"
+    >
+      <div
+        className="react-notie-message"
+      >
+        Are you sure?
+      </div>
+      <div
+        className="react-notie-choices"
+      >
+        <div
+          className="react-notie-choice react-notie-choice--yes"
+          onClick={[Function]}
+        >
+          Yes
+        </div>
+        <div
+          className="react-notie-choice react-notie-choice--no"
+          onClick={[Function]}
+        >
+          No
+        </div>
+      </div>
+    </div>
+  </div>
+</Notie>
+`;
+
+exports[`<Notie /> confirm no consecutive calls 2`] = `
+<Notie>
+  <div
+    className="react-notie react-notie-level--confirm react-notie--active"
+  >
+    <div
+      className="react-notie-overlay"
+    />
+    <div
+      className="react-notie-container"
+    >
+      <div
+        className="react-notie-message"
+      >
+        Are you sure?
+      </div>
+      <div
+        className="react-notie-choices"
+      >
+        <div
+          className="react-notie-choice react-notie-choice--yes"
+          onClick={[Function]}
+        >
+          Yes
+        </div>
+        <div
+          className="react-notie-choice react-notie-choice--no"
+          onClick={[Function]}
+        >
+          No
+        </div>
+      </div>
+    </div>
+  </div>
+</Notie>
+`;
+
+exports[`<Notie /> consecutive calls 1`] = `
+<Notie>
+  <div
+    className="react-notie react-notie-level--info react-notie--active"
+  >
+    <div
+      className="react-notie-container"
+    >
+      <div
+        className="react-notie-message"
+      >
+        Info!
+      </div>
+    </div>
+  </div>
+</Notie>
+`;
+
+exports[`<Notie /> consecutive calls 2`] = `
+<Notie>
+  <div
+    className="react-notie react-notie-level--error react-notie--active"
+  >
+    <div
+      className="react-notie-container"
+    >
+      <div
+        className="react-notie-message"
+      >
+        Error!
+      </div>
+    </div>
+  </div>
+</Notie>
+`;
+
+exports[`<Notie /> error message 1`] = `
+<Notie>
+  <div
+    className="react-notie react-notie-level--error react-notie--active"
+  >
+    <div
+      className="react-notie-container"
+    >
+      <div
+        className="react-notie-message"
+      >
+        Error!
+      </div>
+    </div>
+  </div>
+</Notie>
+`;
+
+exports[`<Notie /> error message 2`] = `
+<Notie>
+  <div
+    className="react-notie react-notie-level--error"
+  >
+    <div
+      className="react-notie-container"
+    >
+      <div
+        className="react-notie-message"
+      >
+        Error!
+      </div>
+    </div>
+  </div>
+</Notie>
+`;
+
+exports[`<Notie /> info message 1`] = `
+<Notie>
+  <div
+    className="react-notie react-notie-level--info react-notie--active"
+  >
+    <div
+      className="react-notie-container"
+    >
+      <div
+        className="react-notie-message"
+      >
+        Info!
+      </div>
+    </div>
+  </div>
+</Notie>
+`;
+
+exports[`<Notie /> info message 2`] = `
+<Notie>
+  <div
+    className="react-notie react-notie-level--info"
+  >
+    <div
+      className="react-notie-container"
+    >
+      <div
+        className="react-notie-message"
+      >
+        Info!
+      </div>
+    </div>
+  </div>
+</Notie>
+`;
+
+exports[`<Notie /> initial render 1`] = `
+<Notie>
+  <div
+    className="react-notie react-notie-level--info"
+  >
+    <div
+      className="react-notie-container"
+    >
+      <div
+        className="react-notie-message"
+      />
+    </div>
+  </div>
+</Notie>
+`;
+
+exports[`<Notie /> success message 1`] = `
+<Notie>
+  <div
+    className="react-notie react-notie-level--success react-notie--active"
+  >
+    <div
+      className="react-notie-container"
+    >
+      <div
+        className="react-notie-message"
+      >
+        Success!
+      </div>
+    </div>
+  </div>
+</Notie>
+`;
+
+exports[`<Notie /> success message 2`] = `
+<Notie>
+  <div
+    className="react-notie react-notie-level--success"
+  >
+    <div
+      className="react-notie-container"
+    >
+      <div
+        className="react-notie-message"
+      >
+        Success!
+      </div>
+    </div>
+  </div>
+</Notie>
+`;
+
+exports[`<Notie /> warn message 1`] = `
+<Notie>
+  <div
+    className="react-notie react-notie-level--warn react-notie--active"
+  >
+    <div
+      className="react-notie-container"
+    >
+      <div
+        className="react-notie-message"
+      >
+        Warn!
+      </div>
+    </div>
+  </div>
+</Notie>
+`;
+
+exports[`<Notie /> warn message 2`] = `
+<Notie>
+  <div
+    className="react-notie react-notie-level--warn"
+  >
+    <div
+      className="react-notie-container"
+    >
+      <div
+        className="react-notie-message"
+      >
+        Warn!
+      </div>
+    </div>
+  </div>
+</Notie>
+`;

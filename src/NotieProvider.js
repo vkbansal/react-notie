@@ -12,6 +12,7 @@ class NotieProvider extends Component {
         children: PropTypes.node.isRequired
     }
 
+    /* istanbul ignore next */
     getChildContext() {
         return {
             notie: {

@@ -8,3 +8,4 @@ coverage/
 bundle.js
 *.log
 *.js.map
+jsconfig.json
