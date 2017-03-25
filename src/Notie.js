@@ -139,7 +139,7 @@ export default class Notie extends Component {
 
         return (
             <div ref={this.rootRef} className={classes}>
-                {level === 'CONFIRM' && <div className='react-notie-overlay' />}
+                {level === 'CONFIRM' && visible && <div className='react-notie-overlay' />}
                 <div className='react-notie-container'>
                     <div className='react-notie-message'>{message}</div>
                     {level === 'CONFIRM' && (
