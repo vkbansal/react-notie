@@ -45,7 +45,7 @@ yarn add react-notie
 
 1. Render root of your app within `<NotieProvider />`.
 2. use `withNotie` decorator/hoc with the component where you want to notie.
-3. include `react-notie/css/react-notie.css`.
+3. include `react-notie/css/notie.css`.
 
 ```js
 // index.js
