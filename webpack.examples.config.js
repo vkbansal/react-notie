@@ -33,7 +33,8 @@ const config = {
                                 targets: {
                                     browsers: 'Edge >= 12, FireFox >= 38, Chrome >= 47, Opera >= 34, Safari >= 9'
                                 }
-                            }]
+                            }],
+                            'babili'
                         ],
                         plugins: [
                             'transform-decorators-legacy',
