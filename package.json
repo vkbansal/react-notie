@@ -14,7 +14,7 @@
     "modules": "cross-env BABEL_ENV=es5 babel src --out-dir modules",
     "modules:es6": "cross-env BABEL_ENV=es6 babel src --out-dir es6",
     "build": "npm run clean && npm run test && npm run dist && npm run modules && npm run modules:es6",
-    "build:examples": "webpack --progress --profile --colors --config webpack.examples.config.js",
+    "build:examples": "NODE_ENV=production webpack --progress --profile --colors --config webpack.examples.config.js",
     "prepublish": "npm run build"
   },
   "repository": {
