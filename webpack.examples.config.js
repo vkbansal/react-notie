@@ -2,6 +2,7 @@
 
 const webpack = require('webpack');
 const path  = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const PROD = process.env.NODE_ENV === 'production';
 
@@ -49,18 +50,17 @@ const config = {
             }
         ]
     },
-    plugins: []
+    plugins: [
+        new CopyWebpackPlugin([
+            {
+                from: './css/notie.css',
+                to: './'
+            }
+        ])
+    ]
 };
 
 !PROD && (config.devtool = "source-map");
-
-PROD && config.plugins.push(
-     new webpack.optimize.UglifyJsPlugin({
-        compressor: {
-            warnings: false,
-        }
-    })
-);
 
 PROD && config.plugins.push(
     new webpack.DefinePlugin({

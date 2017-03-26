@@ -9,3 +9,4 @@ bundle.js
 *.log
 *.js.map
 jsconfig.json
+examples/notie.css
