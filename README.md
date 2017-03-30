@@ -3,6 +3,8 @@
 [![Dependency Status][deps-image]][deps-url]
 [![Dev Dependency Status][dev-deps-image]][dev-deps-url]
 
+[![NPM](https://nodei.co/npm/react-notie.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/react-contextmenu/)
+
 # React Notie
 Simple notification for React.
 
