@@ -3,3 +3,5 @@
     - vkbansal
     - vkbansal/react
   parser: babel-eslint
+  env:
+    browser: true
