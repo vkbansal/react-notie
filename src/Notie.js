@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 
 const defaultState = () => ({
@@ -9,6 +9,16 @@ const defaultState = () => ({
 });
 
 export default class Notie extends Component {
+    static defaultProps = {
+        ttl: 5000,
+        position: 'top'
+    };
+
+    static propTypes = {
+        ttl: PropTypes.number,
+        position: PropTypes.oneOf(['top', 'bottom'])
+    };
+
     constructor(props) {
         super(props);
 
@@ -18,8 +28,13 @@ export default class Notie extends Component {
         }, defaultState());
     }
 
+    componentDidMount() {
+        this.root.style.opacity = 0;
+    }
+
     shouldComponentUpdate(nextProps, nextState) {
-        return this.state.visible !== nextState.visible;
+        return this.state.visible !== nextState.visible
+            || this.props.position !== nextProps.position;
     }
 
     componentWillUnmount() {
@@ -34,10 +49,10 @@ export default class Notie extends Component {
         }
     }
 
-    alert = (props = {}) => {
+    alert = (settings = {}) => {
         if (this.state.locked) return;
 
-        const toLock = props.level === 'CONFIRM';
+        const toLock = settings.level === 'CONFIRM';
 
         if (this.timeout) {
             clearTimeout(this.timeout);
@@ -45,32 +60,26 @@ export default class Notie extends Component {
         }
 
         if (this.state.visible) {
-            this.hide();
-
-            this.transitionendCallback = () => {
-                this.alert(props);
-                this.root.removeEventListener('transitionend', this.transitionendCallback);
-                this.transitionendCallback = null;
-            };
-            this.root.addEventListener('transitionend', this.transitionendCallback);
-
+            this.hide(() => this.alert(settings));
             return;
         }
 
+        this.root.style.opacity = 1;
+
         this.setState(state => ({
-            message: props.message,
-            level: props.level,
+            message: settings.message,
+            level: settings.level,
             visible: true,
             locked: toLock,
-            yesBtnText: props.yesBtnText || state.yesBtnText,
-            noBtnText: props.noBtnText || state.noBtnText
+            yesBtnText: settings.yesBtnText || state.yesBtnText,
+            noBtnText: settings.noBtnText || state.noBtnText
         }));
 
         if (!toLock) {
             this.timeout = setTimeout(() => {
                 this.hide();
                 this.timeout = null;
-            }, props.ttl || 5000);
+            }, settings.ttl || this.props.ttl);
         }
     }
 
@@ -99,35 +108,20 @@ export default class Notie extends Component {
         this.alert({ message, level: 'INFO', ttl });
     }
 
-    hide = () => {
+    hide = (callback) => {
         this.setState(() => defaultState());
-    }
-
-    handleYes = () => {
-        this.hide();
         this.transitionendCallback = () => {
-            /* istanbul ignore next */
-            if (typeof this.confirmResolve === 'function') {
-                this.confirmResolve();
-            }
+            this.root.style.opacity = 0;
+            if (typeof callback === 'function') callback();
             this.root.removeEventListener('transitionend', this.transitionendCallback);
             this.transitionendCallback = null;
         };
         this.root.addEventListener('transitionend', this.transitionendCallback);
     }
 
-    handleNo = () => {
-        this.hide();
-        this.transitionendCallback = () => {
-            /* istanbul ignore next */
-            if (typeof this.confirmReject === 'function') {
-                this.confirmReject();
-            }
-            this.root.removeEventListener('transitionend', this.transitionendCallback);
-            this.transitionendCallback = null;
-        };
-        this.root.addEventListener('transitionend', this.transitionendCallback);
-    }
+    handleYes = () => this.hide(this.confirmResolve);
+
+    handleNo = () => this.hide(this.confirmReject);
 
     handleDismiss = () => {
         if (this.timeout) {
@@ -144,9 +138,14 @@ export default class Notie extends Component {
 
     render() {
         const { message, level, visible } = this.state;
-        const classes = cx('react-notie', [`react-notie-level--${level.toLowerCase()}`], {
-            'react-notie--active': visible
-        });
+        const classes = cx(
+            'react-notie',
+            `react-notie--${this.props.position.toLowerCase()}`,
+            `react-notie-level--${level.toLowerCase()}`,
+            {
+                'react-notie--active': visible
+            }
+        );
 
         return (
             <div ref={this.rootRef} className={classes}>

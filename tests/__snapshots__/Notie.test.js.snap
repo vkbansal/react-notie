@@ -1,9 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Notie /> confirm Custom button text 1`] = `
-<Notie>
+<Notie
+  position="top"
+  ttl={5000}
+>
   <div
-    className="react-notie react-notie-level--confirm react-notie--active"
+    className="react-notie react-notie--top react-notie-level--confirm react-notie--active"
   >
     <div
       className="react-notie-overlay"
@@ -38,9 +41,12 @@ exports[`<Notie /> confirm Custom button text 1`] = `
 `;
 
 exports[`<Notie /> confirm click no 1`] = `
-<Notie>
+<Notie
+  position="top"
+  ttl={5000}
+>
   <div
-    className="react-notie react-notie-level--confirm"
+    className="react-notie react-notie--top react-notie-level--confirm"
   >
     <div
       className="react-notie-container"
@@ -72,9 +78,12 @@ exports[`<Notie /> confirm click no 1`] = `
 `;
 
 exports[`<Notie /> confirm click yes 1`] = `
-<Notie>
+<Notie
+  position="top"
+  ttl={5000}
+>
   <div
-    className="react-notie react-notie-level--confirm"
+    className="react-notie react-notie--top react-notie-level--confirm"
   >
     <div
       className="react-notie-container"
@@ -106,9 +115,12 @@ exports[`<Notie /> confirm click yes 1`] = `
 `;
 
 exports[`<Notie /> confirm initial render 1`] = `
-<Notie>
+<Notie
+  position="top"
+  ttl={5000}
+>
   <div
-    className="react-notie react-notie-level--confirm react-notie--active"
+    className="react-notie react-notie--top react-notie-level--confirm react-notie--active"
   >
     <div
       className="react-notie-overlay"
@@ -143,9 +155,12 @@ exports[`<Notie /> confirm initial render 1`] = `
 `;
 
 exports[`<Notie /> confirm no consecutive calls 1`] = `
-<Notie>
+<Notie
+  position="top"
+  ttl={5000}
+>
   <div
-    className="react-notie react-notie-level--confirm react-notie--active"
+    className="react-notie react-notie--top react-notie-level--confirm react-notie--active"
   >
     <div
       className="react-notie-overlay"
@@ -180,9 +195,12 @@ exports[`<Notie /> confirm no consecutive calls 1`] = `
 `;
 
 exports[`<Notie /> confirm no consecutive calls 2`] = `
-<Notie>
+<Notie
+  position="top"
+  ttl={5000}
+>
   <div
-    className="react-notie react-notie-level--confirm react-notie--active"
+    className="react-notie react-notie--top react-notie-level--confirm react-notie--active"
   >
     <div
       className="react-notie-overlay"
@@ -217,9 +235,12 @@ exports[`<Notie /> confirm no consecutive calls 2`] = `
 `;
 
 exports[`<Notie /> consecutive calls 1`] = `
-<Notie>
+<Notie
+  position="top"
+  ttl={5000}
+>
   <div
-    className="react-notie react-notie-level--info react-notie--active"
+    className="react-notie react-notie--top react-notie-level--info react-notie--active"
   >
     <div
       className="react-notie-container"
@@ -239,9 +260,12 @@ exports[`<Notie /> consecutive calls 1`] = `
 `;
 
 exports[`<Notie /> consecutive calls 2`] = `
-<Notie>
+<Notie
+  position="top"
+  ttl={5000}
+>
   <div
-    className="react-notie react-notie-level--error react-notie--active"
+    className="react-notie react-notie--top react-notie-level--error react-notie--active"
   >
     <div
       className="react-notie-container"
@@ -261,9 +285,12 @@ exports[`<Notie /> consecutive calls 2`] = `
 `;
 
 exports[`<Notie /> dismiss click 1`] = `
-<Notie>
+<Notie
+  position="top"
+  ttl={5000}
+>
   <div
-    className="react-notie react-notie-level--info react-notie--active"
+    className="react-notie react-notie--top react-notie-level--info react-notie--active"
   >
     <div
       className="react-notie-container"
@@ -283,9 +310,12 @@ exports[`<Notie /> dismiss click 1`] = `
 `;
 
 exports[`<Notie /> dismiss click 2`] = `
-<Notie>
+<Notie
+  position="top"
+  ttl={5000}
+>
   <div
-    className="react-notie react-notie-level--info"
+    className="react-notie react-notie--top react-notie-level--info"
   >
     <div
       className="react-notie-container"
@@ -305,9 +335,12 @@ exports[`<Notie /> dismiss click 2`] = `
 `;
 
 exports[`<Notie /> error message 1`] = `
-<Notie>
+<Notie
+  position="top"
+  ttl={5000}
+>
   <div
-    className="react-notie react-notie-level--error react-notie--active"
+    className="react-notie react-notie--top react-notie-level--error react-notie--active"
   >
     <div
       className="react-notie-container"
@@ -327,9 +360,12 @@ exports[`<Notie /> error message 1`] = `
 `;
 
 exports[`<Notie /> error message 2`] = `
-<Notie>
+<Notie
+  position="top"
+  ttl={5000}
+>
   <div
-    className="react-notie react-notie-level--error"
+    className="react-notie react-notie--top react-notie-level--error"
   >
     <div
       className="react-notie-container"
@@ -349,9 +385,12 @@ exports[`<Notie /> error message 2`] = `
 `;
 
 exports[`<Notie /> info message 1`] = `
-<Notie>
+<Notie
+  position="top"
+  ttl={5000}
+>
   <div
-    className="react-notie react-notie-level--info react-notie--active"
+    className="react-notie react-notie--top react-notie-level--info react-notie--active"
   >
     <div
       className="react-notie-container"
@@ -371,9 +410,12 @@ exports[`<Notie /> info message 1`] = `
 `;
 
 exports[`<Notie /> info message 2`] = `
-<Notie>
+<Notie
+  position="top"
+  ttl={5000}
+>
   <div
-    className="react-notie react-notie-level--info"
+    className="react-notie react-notie--top react-notie-level--info"
   >
     <div
       className="react-notie-container"
@@ -393,9 +435,12 @@ exports[`<Notie /> info message 2`] = `
 `;
 
 exports[`<Notie /> initial render 1`] = `
-<Notie>
+<Notie
+  position="top"
+  ttl={5000}
+>
   <div
-    className="react-notie react-notie-level--info"
+    className="react-notie react-notie--top react-notie-level--info"
   >
     <div
       className="react-notie-container"
@@ -413,9 +458,12 @@ exports[`<Notie /> initial render 1`] = `
 `;
 
 exports[`<Notie /> success message 1`] = `
-<Notie>
+<Notie
+  position="top"
+  ttl={5000}
+>
   <div
-    className="react-notie react-notie-level--success react-notie--active"
+    className="react-notie react-notie--top react-notie-level--success react-notie--active"
   >
     <div
       className="react-notie-container"
@@ -435,9 +483,12 @@ exports[`<Notie /> success message 1`] = `
 `;
 
 exports[`<Notie /> success message 2`] = `
-<Notie>
+<Notie
+  position="top"
+  ttl={5000}
+>
   <div
-    className="react-notie react-notie-level--success"
+    className="react-notie react-notie--top react-notie-level--success"
   >
     <div
       className="react-notie-container"
@@ -457,9 +508,12 @@ exports[`<Notie /> success message 2`] = `
 `;
 
 exports[`<Notie /> warn message 1`] = `
-<Notie>
+<Notie
+  position="top"
+  ttl={5000}
+>
   <div
-    className="react-notie react-notie-level--warn react-notie--active"
+    className="react-notie react-notie--top react-notie-level--warn react-notie--active"
   >
     <div
       className="react-notie-container"
@@ -479,9 +533,12 @@ exports[`<Notie /> warn message 1`] = `
 `;
 
 exports[`<Notie /> warn message 2`] = `
-<Notie>
+<Notie
+  position="top"
+  ttl={5000}
+>
   <div
-    className="react-notie react-notie-level--warn"
+    className="react-notie react-notie--top react-notie-level--warn"
   >
     <div
       className="react-notie-container"

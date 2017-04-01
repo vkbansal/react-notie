@@ -5,6 +5,9 @@ exports[`<NotieProvider /> renders correctly with children 1`] = `
   <div>
     some children
   </div>
-  <Notie />
+  <Notie
+    position="top"
+    ttl={5000}
+  />
 </div>
 `;

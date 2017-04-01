@@ -31,10 +31,12 @@ class NotieProvider extends Component {
     }
 
     render() {
+        const { children, ...rest } = this.props;
+
         return (
             <div>
-                {this.props.children}
-                <Notie ref={this.notieRef} />
+                {children}
+                <Notie ref={this.notieRef} {...rest} />
             </div>
         );
     }
