@@ -16,7 +16,8 @@
                 ]
             ],
             "plugins": [
-                "transform-class-properties"
+                "transform-class-properties",
+                "transform-object-rest-spread"
             ]
         },
         "es5": {
@@ -31,7 +32,8 @@
                 ]
             ],
             "plugins": [
-                "transform-class-properties"
+                "transform-class-properties",
+                "transform-object-rest-spread"
             ]
         },
         "test": {
@@ -46,7 +48,8 @@
                 ]
             ],
             "plugins": [
-                "transform-class-properties"
+                "transform-class-properties",
+                "transform-object-rest-spread"
             ]
         }
     }
