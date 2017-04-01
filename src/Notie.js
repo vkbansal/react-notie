@@ -129,6 +129,17 @@ export default class Notie extends Component {
         this.root.addEventListener('transitionend', this.transitionendCallback);
     }
 
+    handleDismiss = () => {
+        if (this.timeout) {
+            clearTimeout(this.timeout);
+            this.timeout = null;
+        }
+
+        if (this.state.visible) {
+            this.hide();
+        }
+    }
+
     rootRef = c => (this.root = c);
 
     render() {
@@ -153,6 +164,7 @@ export default class Notie extends Component {
                             </div>
                         </div>
                     )}
+                    {level !== 'CONFIRM' && <div className='react-notie-dismiss' onClick={this.handleDismiss} />}
                 </div>
             </div>
         );

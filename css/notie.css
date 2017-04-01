@@ -71,6 +71,20 @@
     background-color:  #ff4949;
 }
 
+.react-notie-dismiss {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+
+.react-notie-dismiss::before {
+    content: 'X';
+}
+
 .react-notie-overlay {
     position: fixed;
     top: 0;

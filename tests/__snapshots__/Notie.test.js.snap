@@ -229,6 +229,10 @@ exports[`<Notie /> consecutive calls 1`] = `
       >
         Info!
       </div>
+      <div
+        className="react-notie-dismiss"
+        onClick={[Function]}
+      />
     </div>
   </div>
 </Notie>
@@ -247,6 +251,54 @@ exports[`<Notie /> consecutive calls 2`] = `
       >
         Error!
       </div>
+      <div
+        className="react-notie-dismiss"
+        onClick={[Function]}
+      />
+    </div>
+  </div>
+</Notie>
+`;
+
+exports[`<Notie /> dismiss click 1`] = `
+<Notie>
+  <div
+    className="react-notie react-notie-level--info react-notie--active"
+  >
+    <div
+      className="react-notie-container"
+    >
+      <div
+        className="react-notie-message"
+      >
+        Info!
+      </div>
+      <div
+        className="react-notie-dismiss"
+        onClick={[Function]}
+      />
+    </div>
+  </div>
+</Notie>
+`;
+
+exports[`<Notie /> dismiss click 2`] = `
+<Notie>
+  <div
+    className="react-notie react-notie-level--info"
+  >
+    <div
+      className="react-notie-container"
+    >
+      <div
+        className="react-notie-message"
+      >
+        Info!
+      </div>
+      <div
+        className="react-notie-dismiss"
+        onClick={[Function]}
+      />
     </div>
   </div>
 </Notie>
@@ -265,6 +317,10 @@ exports[`<Notie /> error message 1`] = `
       >
         Error!
       </div>
+      <div
+        className="react-notie-dismiss"
+        onClick={[Function]}
+      />
     </div>
   </div>
 </Notie>
@@ -283,6 +339,10 @@ exports[`<Notie /> error message 2`] = `
       >
         Error!
       </div>
+      <div
+        className="react-notie-dismiss"
+        onClick={[Function]}
+      />
     </div>
   </div>
 </Notie>
@@ -301,6 +361,10 @@ exports[`<Notie /> info message 1`] = `
       >
         Info!
       </div>
+      <div
+        className="react-notie-dismiss"
+        onClick={[Function]}
+      />
     </div>
   </div>
 </Notie>
@@ -319,6 +383,10 @@ exports[`<Notie /> info message 2`] = `
       >
         Info!
       </div>
+      <div
+        className="react-notie-dismiss"
+        onClick={[Function]}
+      />
     </div>
   </div>
 </Notie>
@@ -334,6 +402,10 @@ exports[`<Notie /> initial render 1`] = `
     >
       <div
         className="react-notie-message"
+      />
+      <div
+        className="react-notie-dismiss"
+        onClick={[Function]}
       />
     </div>
   </div>
@@ -353,6 +425,10 @@ exports[`<Notie /> success message 1`] = `
       >
         Success!
       </div>
+      <div
+        className="react-notie-dismiss"
+        onClick={[Function]}
+      />
     </div>
   </div>
 </Notie>
@@ -371,6 +447,10 @@ exports[`<Notie /> success message 2`] = `
       >
         Success!
       </div>
+      <div
+        className="react-notie-dismiss"
+        onClick={[Function]}
+      />
     </div>
   </div>
 </Notie>
@@ -389,6 +469,10 @@ exports[`<Notie /> warn message 1`] = `
       >
         Warn!
       </div>
+      <div
+        className="react-notie-dismiss"
+        onClick={[Function]}
+      />
     </div>
   </div>
 </Notie>
@@ -407,6 +491,10 @@ exports[`<Notie /> warn message 2`] = `
       >
         Warn!
       </div>
+      <div
+        className="react-notie-dismiss"
+        onClick={[Function]}
+      />
     </div>
   </div>
 </Notie>

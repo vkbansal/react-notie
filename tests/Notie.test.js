@@ -96,6 +96,16 @@ describe('<Notie />', () => {
         expect(instance.transitionendCallback).toBe(null);
     });
 
+    test('dismiss click', () => {
+        component.instance().info('Info!');
+        expect(component.find('.react-notie-level--info').length).toBe(1);
+        expect(component.find('.react-notie--active').length).toBe(1);
+        expect(component).toMatchSnapshot();
+        component.find('.react-notie-dismiss').simulate('click');
+        expect(component.find('.react-notie--active').length).toBe(0);
+        expect(component).toMatchSnapshot();
+    });
+
     describe('confirm', () => {
         test('initial render', () => {
             component.instance().confirm('Are you sure?');
