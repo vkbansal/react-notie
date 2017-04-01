@@ -82,7 +82,7 @@
 }
 
 .react-notie-dismiss::before {
-    content: 'X';
+    content: '✕';
 }
 
 .react-notie-overlay {
