@@ -7,16 +7,17 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const PROD = process.env.NODE_ENV === 'production';
 
 const config = {
-    entry: ["./examples/index.js"],
+    context: __dirname,
+    entry: "./index.js",
     output: {
         filename: "bundle.js",
-        path: path.resolve(__dirname, "./examples"),
+        path: path.resolve(__dirname, '../public'),
         publicPath: "/",
         sourceMapFilename: "bundle.js.map"
     },
     resolve: {
         modules: [
-            path.resolve(__dirname),
+            path.resolve(__dirname, "../"),
             'node_modules'
         ]
     },
@@ -44,21 +45,27 @@ const config = {
                     }
                 }],
                 include: [
-                    path.resolve(__dirname, './src'),
-                    path.resolve(__dirname, './examples')
+                    path.resolve(__dirname, '../src'),
+                    __dirname
                 ]
             }
         ]
     },
     plugins: [
-        new CopyWebpackPlugin([
-            {
-                from: './css/notie.css',
-                to: './'
-            }
-        ])
+
     ]
 };
+
+let copySettings = [{
+    from: '../css/notie.css',
+    to: './'
+}]
+
+PROD && copySettings.push({
+    from: './index.html'
+})
+
+config.plugins.push(new CopyWebpackPlugin(copySettings));
 
 !PROD && (config.devtool = "source-map");
 
