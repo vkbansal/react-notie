@@ -154,16 +154,16 @@ export default class Notie extends Component {
                     <div className='react-notie-message'>{message}</div>
                     {level === 'CONFIRM' && (
                         <div className='react-notie-choices'>
-                            <div className='react-notie-choice react-notie-choice--yes' onClick={this.handleYes}>
+                            <button className='react-notie-choice react-notie-choice--yes' onClick={this.handleYes}>
                                 {this.state.yesBtnText}
-                            </div>
+                            </button>
 
-                            <div className='react-notie-choice react-notie-choice--no' onClick={this.handleNo}>
+                            <button className='react-notie-choice react-notie-choice--no' onClick={this.handleNo}>
                                 {this.state.noBtnText}
-                            </div>
+                            </button>
                         </div>
                     )}
-                    {level !== 'CONFIRM' && <div className='react-notie-dismiss' onClick={this.handleDismiss} />}
+                    {level !== 'CONFIRM' && <button className='react-notie-dismiss' onClick={this.handleDismiss} />}
                 </div>
             </div>
         );
