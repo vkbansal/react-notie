@@ -1,12 +1,12 @@
 const jsdom = require('jsdom');
 
 const documentHTML = '<!doctype html><html><body><div id="root"></div></body></html>';
-global.document = jsdom.jsdom(documentHTML);
-global.window = document.parentWindow;
+const dom = new jsdom.JSDOM(documentHTML);
+global.document = dom.window.document;
+global.window = dom.window;
 global.window.resizeTo = (width, height) => {
     global.window.innerWidth = width || global.window.innerWidth;
     global.window.innerHeight = width || global.window.innerHeight;
     global.window.dispatchEvent(new Event('resize'));
 };
 global.window.requestAnimationFrame = jest.fn();
-// Element.prototype.addEventListener = jest.fn((...args) => console.log(args[1]()))
