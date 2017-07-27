@@ -4,6 +4,7 @@
   "description": "Simple notification, input and selection suite for react",
   "main": "modules/index.js",
   "module": "es6/index.js",
+  "typings": "src/index.d.ts",
   "scripts": {
     "test": "npm run lint && npm run test:only",
     "start": "npm run clean:examples && node examples/server.js",
