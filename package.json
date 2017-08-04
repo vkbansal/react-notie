@@ -25,6 +25,9 @@
     "url": "git+https://github.com/vkbansal/react-notie.git"
   },
   "keywords": [
+     "react",
+    "reactjs",
+    "react-component",
     "notification",
     "confirm",
     "alert",
