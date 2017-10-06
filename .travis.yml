@@ -1,12 +1,24 @@
 language: node_js
 node_js:
-- 8
+  - 8
 after_success:
-- npm run coveralls
+  - npm run coveralls
 script:
-- npm test
-- bash ./.travis/deploy.sh
+  - npm test
+before_deploy:
+  - NODE_ENV=production npm run build:examples
 env:
   global:
-  - GITHUB_REPO: vkbansal/react-notie
-  - secure: gH2A1Vs19xnmnI69xOA188EmhwjUtJbLLUDpWMqt21UgtuvNDRGzTmGGi2Zv5UMppIYlqZ/jTn6w66x6LC7ddZkxNcoHfwGONTmnaXmCFUmaZwUITbots0gbd1PFHk4x97TPOwYRW6LUL8FVkesK0oIHfUv2jmlb6T/rztDF2DNpkCtV6MJaAkt0SjN/QD5eTnA+vjrR5hoW488sgrMurOS+Tz1WoI153GIWbdVfIxOwtPpAWX81tGpAgMJgJgKf5lBPaaVPfUq+DC6cr2HLVEfaalYBc5F8IwbaSPeQYJBC98HkNiOwyrrwwDAPa5C6FuDUBUHzeJMKDIx+oUqSjd0iKW9l7VUFmJ1KMTdolH8KydvqfPm19UcDAdXw77n6XLQiY4wTOsWL0aLYsYlg4xvEhpqmIso1voO2GTsgVWVOc+1WjgNpagHLYUC60ekpAOdmhNtkpSW4RGBm/odHW2jpDVh8HLGstqTKkoqM2BWd7VBpgqObLc3FkzflSLsgp3mZoIRPWUjOXiAblHOvtYZ7cBPsSmjq391BBU2ZCwbRP5bSmp+0CA+76s6a7rkZrHIQEPyORJ5uEGCXZGPdUEcN5VSarZhpIk1Yy6gdF4JMHfOk1DR14RmcapDjFS41YGP6hpV7yzoeWAY1lc/sWCJeNJ7A4mhEjh3ZFEaF/ms=
+    - GITHUB_REPO: vkbansal/react-notie
+deploy:
+  provider: s3
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
+  bucket: aws-website-my-website-mr5h4
+  local-dir: public
+  upload-dir: react-notie
+  skip_cleanup: true
+  default_text_charset: 'utf-8'
+  on:
+    branch: master
+    repo: vkbansal/react-notie

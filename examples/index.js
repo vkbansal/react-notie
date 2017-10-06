@@ -1,8 +1,11 @@
 /* eslint-disable react/no-multi-comp */
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 
 import { NotieProvider, withNotie } from '../src';
+
+import '../css/notie.css';
 
 @withNotie
 class NotieExamples extends Component {

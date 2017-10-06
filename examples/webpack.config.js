@@ -2,18 +2,20 @@
 
 const webpack = require('webpack');
 const path  = require('path');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const Extract = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MinifyPlugin = require('babel-minify-webpack-plugin');
 
 const PROD = process.env.NODE_ENV === 'production';
+const DEV = !PROD;
 
 const config = {
-    context: __dirname,
-    entry: "./index.js",
+    entry: './examples/index.js',
     output: {
-        filename: "bundle.js",
+        filename: DEV ? 'bundle.js' : 'bundle.[hash].js',
         path: path.resolve(__dirname, '../public'),
-        publicPath: "/",
-        sourceMapFilename: "bundle.js.map"
+        publicPath:  DEV ? '/' : '/react-notie/',
+        sourceMapFilename: 'bundle.js.map'
     },
     resolve: {
         modules: [
@@ -35,8 +37,7 @@ const config = {
                                 targets: {
                                     browsers: 'Edge >= 12, FireFox >= 38, Chrome >= 47, Opera >= 34, Safari >= 9'
                                 }
-                            }],
-                            'babili'
+                            }]
                         ],
                         plugins: [
                             'transform-decorators-legacy',
@@ -49,24 +50,30 @@ const config = {
                     path.resolve(__dirname, '../src'),
                     __dirname
                 ]
+            },
+            {
+                test: /\.css$/,
+                use: Extract.extract({
+                    fallback: 'style-loader',
+                    use: [{
+                        loader: 'css-loader'
+                    }]
+                }),
             }
         ]
     },
     plugins: [
-
+        new Extract({
+            filename: DEV ? 'styles.css' : 'styles.[contenthash:6].css',
+            allChunks: true
+        }),
+        new HtmlWebpackPlugin({
+            template: 'examples/index.html',
+            inject: true,
+            filename: 'index.html'
+        })
     ]
 };
-
-let copySettings = [{
-    from: '../css/notie.css',
-    to: './'
-}]
-
-PROD && copySettings.push({
-    from: './index.html'
-})
-
-config.plugins.push(new CopyWebpackPlugin(copySettings));
 
 !PROD && (config.devtool = "source-map");
 
@@ -75,7 +82,8 @@ PROD && config.plugins.push(
         "process.env": {
             "NODE_ENV": JSON.stringify("production")
         }
-    })
+    }),
+    new MinifyPlugin()
 );
 
 module.exports = config;
