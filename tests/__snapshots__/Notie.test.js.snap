@@ -6,35 +6,18 @@ exports[`<Notie /> confirm Custom button text 1`] = `
   ttl={5000}
 >
   <div
-    className="react-notie react-notie--top react-notie-level--confirm react-notie--active"
+    className="react-notie react-notie--top react-notie-level--info"
   >
-    <div
-      className="react-notie-overlay"
-    />
     <div
       className="react-notie-container"
     >
       <div
         className="react-notie-message"
-      >
-        Are you sure?
-      </div>
+      />
       <div
-        className="react-notie-choices"
-      >
-        <div
-          className="react-notie-choice react-notie-choice--yes"
-          onClick={[Function]}
-        >
-          Hell Yeah!
-        </div>
-        <div
-          className="react-notie-choice react-notie-choice--no"
-          onClick={[Function]}
-        >
-          Fuck NO!
-        </div>
-      </div>
+        className="react-notie-dismiss"
+        onClick={[Function]}
+      />
     </div>
   </div>
 </Notie>
