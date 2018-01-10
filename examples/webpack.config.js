@@ -1,8 +1,7 @@
 /* eslint-disable */
 
 const webpack = require('webpack');
-const path  = require('path');
-const Extract = require('extract-text-webpack-plugin');
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MinifyPlugin = require('babel-minify-webpack-plugin');
 
@@ -10,63 +9,41 @@ const PROD = process.env.NODE_ENV === 'production';
 const DEV = !PROD;
 
 const config = {
-    entry: './examples/index.js',
+    entry: ['./examples/index.tsx'],
     output: {
         filename: DEV ? 'bundle.js' : 'bundle.[hash].js',
         path: path.resolve(__dirname, '../public'),
-        publicPath:  DEV ? '/' : '/react-notie/',
+        publicPath: DEV ? '/' : '/react-notie/',
         sourceMapFilename: 'bundle.js.map'
     },
     resolve: {
-        modules: [
-            path.resolve(__dirname, "../"),
-            'node_modules'
-        ]
+        extensions: ['.js', '.ts', '.tsx']
     },
     module: {
         rules: [
             {
-                test: /\.js$/,
-                use: [{
-                    loader: 'babel-loader',
-                    options: {
-                        presets: [
-                            'react',
-                            ['env', {
-                                modules: false,
-                                targets: {
-                                    browsers: 'Edge >= 12, FireFox >= 38, Chrome >= 47, Opera >= 34, Safari >= 9'
-                                }
-                            }]
-                        ],
-                        plugins: [
-                            'transform-decorators-legacy',
-                            'transform-class-properties',
-                            'transform-object-rest-spread'
-                        ]
+                test: /\.tsx?$/,
+                use: [
+                    {
+                        loader: 'ts-loader',
+                        options: {
+                            transpileOnly: true
+                        }
                     }
-                }],
-                include: [
-                    path.resolve(__dirname, '../src'),
-                    __dirname
-                ]
+                ],
+                include: [path.resolve(__dirname, '../src'), __dirname]
             },
             {
                 test: /\.css$/,
-                use: Extract.extract({
-                    fallback: 'style-loader',
-                    use: [{
-                        loader: 'css-loader'
-                    }]
-                }),
+                use: [
+                    {
+                        loader: 'glamor-loader'
+                    }
+                ]
             }
         ]
     },
     plugins: [
-        new Extract({
-            filename: DEV ? 'styles.css' : 'styles.[contenthash:6].css',
-            allChunks: true
-        }),
         new HtmlWebpackPlugin({
             template: 'examples/index.html',
             inject: true,
@@ -75,15 +52,16 @@ const config = {
     ]
 };
 
-!PROD && (config.devtool = "source-map");
+!PROD && (config.devtool = 'source-map');
 
-PROD && config.plugins.push(
-    new webpack.DefinePlugin({
-        "process.env": {
-            "NODE_ENV": JSON.stringify("production")
-        }
-    }),
-    new MinifyPlugin()
-);
+PROD &&
+    config.plugins.push(
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: JSON.stringify('production')
+            }
+        }),
+        new MinifyPlugin()
+    );
 
 module.exports = config;

@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "alwaysStrict": true,
+        "baseUrl": "./",
+        "charset": "utf8",
+        "jsx": "react",
+        "strict": true,
+        "module": "es6",
+        "newLine": "LF",
+        "moduleResolution": "node",
+        "declaration": true,
+        "target": "es6",
+        "noUnusedLocals": true,
+        "noUnusedParameters": true
+    },
+    "include": [
+        "./src"
+    ],
+    "exclude": [
+        "./src/__tests__"
+    ]
+}
