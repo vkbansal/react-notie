@@ -1,17 +1,17 @@
 {
     "name": "react-notie",
-    "version": "1.3.0",
+    "version": "2.0.0-alpha.1",
     "description": "Simple notification, input and selection suite for react",
-    "main": "modules/index.js",
-    "module": "es6/index.js",
+    "main": "lib/index.js",
+    "module": "esm/index.js",
     "typings": "src/index.d.ts",
     "scripts": {
         "test": "jest --no-cache",
         "coverage": "jest --no-cache --coverage",
         "build": "npm run build:esm && npm run build:cjs && npm run build:esnext",
         "start": "node examples/server.js",
-        "build:esm": "rimraf ./esm && tsc --target es5 --module es6 --outDir ./esm",
-        "build:cjs": "rimraf ./lib && tsc --target es5 --module commonjs --outDir ./lib",
+        "build:esm": "rimraf ./esm && tsc --target es5 --module es6 --lib es2015,dom --outDir ./esm",
+        "build:cjs": "rimraf ./lib && tsc --target es5 --module commonjs --lib es2015,dom --outDir ./lib",
         "build:esnext": "rimraf ./esnext && tsc --target es6 --module es6 --outDir ./esnext",
         "prepublishOnly": "npm test && npm run build"
     },
@@ -19,6 +19,11 @@
         "type": "git",
         "url": "git+https://github.com/vkbansal/react-notie.git"
     },
+    "files": [
+        "esm",
+        "esnext",
+        "lib"
+    ],
     "keywords": [
         "react",
         "reactjs",
@@ -46,6 +51,8 @@
     },
     "devDependencies": {
         "@types/classnames": "^2.2.3",
+        "@types/enzyme": "^3.1.6",
+        "@types/jest": "^22.0.1",
         "@types/react": "^16.0.34",
         "@types/react-dom": "^16.0.3",
         "babel-minify-webpack-plugin": "^0.2.0",
@@ -60,15 +67,13 @@
         "glamorous": "^4.11.2",
         "html-webpack-plugin": "~2.30.1",
         "jest": "^22.0.5",
-        "jest-cli": "^22.0.5",
-        "jest-config": "^22.0.5",
-        "jest-resolve": "^22.0.4",
-        "jest-util": "^22.0.5",
+        "jest-glamor-react": "^3.2.2",
         "jsdom": "^11.5.1",
         "react": "^16.2.0",
         "react-dom": "^16.2.0",
         "react-test-renderer": "^16.2.0",
         "rimraf": "~2.6.1",
+        "ts-jest": "^22.0.1",
         "ts-loader": "^3.2.0",
         "typescript": "^2.6.2",
         "webpack": "^3.10.0",
@@ -76,16 +81,30 @@
     },
     "jest": {
         "setupFiles": [
-            "<rootDir>/tests/.setup.js"
+            "<rootDir>/jest.setup.js"
         ],
-        "snapshotSerializers": [
-            "enzyme-to-json/serializer"
+        "testMatch": [
+            "**/?(*.)(spec|test).ts?(x)"
+        ],
+        "moduleFileExtensions": [
+            "ts",
+            "tsx",
+            "js"
         ],
         "roots": [
-            "<rootDir>/tests"
+            "<rootDir>/src"
+        ],
+        "transform": {
+            "^.+\\.tsx?$": "ts-jest"
+        },
+        "snapshotSerializers": [
+            "enzyme-to-json/serializer",
+            "jest-glamor-react"
         ],
         "collectCoverageFrom": [
-            "**/src/**/*.js"
-        ]
+            "**/*.{ts,tsx}",
+            "!**/__tests__/**"
+        ],
+        "mapCoverage": true
     }
 }

@@ -1,8 +1,8 @@
 node_modules/
 public/
-dist/
-modules/
-es6/
+lib/
+esnext/
+esm/
 coverage/
 .vscode
 bundle.js
