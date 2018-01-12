@@ -3,7 +3,6 @@ import { mount } from 'enzyme';
 
 import { Notie } from '../Notie';
 import * as actions from '../actions';
-import * as components from '../components';
 
 jest.useFakeTimers();
 
@@ -21,68 +20,72 @@ describe('<Notie />', () => {
         }
     });
 
-    test.skip('initial render', () => {
+    test('initial render', () => {
         expect(component).toMatchSnapshot();
+    });
+
+    test('can be mounted only once', () => {
+        expect(() => mount(<Notie />)).toThrow();
     });
 
     test('success message', () => {
         actions.success('Success!');
         component.update();
-        expect(component.find(components.NotieContainer).prop('level')).toBe('SUCCESS');
-        expect(component.find(components.NotieContainer).prop('active')).toBe(true);
+        expect(component.find('.notie--success').length).toBe(1);
+        expect(component.find('.notie--active').length).toBe(1);
         expect(component).toMatchSnapshot();
         jest.runTimersToTime(5000);
         component.update();
-        expect(component.find(components.NotieContainer).prop('active')).toBe(false);
+        expect(component.find('.notie--active').length).toBe(0);
         expect(component).toMatchSnapshot();
     });
 
     test('warn message', () => {
         actions.warn('Warn!');
         component.update();
-        expect(component.find(components.NotieContainer).prop('level')).toBe('WARN');
-        expect(component.find(components.NotieContainer).prop('active')).toBe(true);
+        expect(component.find('.notie--warn').length).toBe(1);
+        expect(component.find('.notie--active').length).toBe(1);
         expect(component).toMatchSnapshot();
         jest.runTimersToTime(5000);
         component.update();
-        expect(component.find(components.NotieContainer).prop('active')).toBe(false);
+        expect(component.find('.notie--active').length).toBe(0);
         expect(component).toMatchSnapshot();
     });
 
     test('error message', () => {
         actions.error('Error!');
         component.update();
-        expect(component.find(components.NotieContainer).prop('level')).toBe('ERROR');
-        expect(component.find(components.NotieContainer).prop('active')).toBe(true);
+        expect(component.find('.notie--error').length).toBe(1);
+        expect(component.find('.notie--active').length).toBe(1);
         expect(component).toMatchSnapshot();
         jest.runTimersToTime(5000);
         component.update();
-        expect(component.find(components.NotieContainer).prop('active')).toBe(false);
+        expect(component.find('.notie--active').length).toBe(0);
         expect(component).toMatchSnapshot();
     });
 
     test('info message', () => {
         actions.info('Info!');
         component.update();
-        expect(component.find(components.NotieContainer).prop('level')).toBe('INFO');
-        expect(component.find(components.NotieContainer).prop('active')).toBe(true);
+        expect(component.find('.notie--info').length).toBe(1);
+        expect(component.find('.notie--active').length).toBe(1);
         expect(component).toMatchSnapshot();
         jest.runTimersToTime(5000);
         component.update();
-        expect(component.find(components.NotieContainer).prop('active')).toBe(false);
+        expect(component.find('.notie--active').length).toBe(0);
         expect(component).toMatchSnapshot();
     });
 
-    test.skip('consecutive calls', () => {
+    test('consecutive calls', () => {
         const instance = component.instance();
-        instance.info('Info!');
+        actions.info('Info!');
         component.update();
-        expect(component.find(components.NotieContainer).prop('level')).toBe('SUCCESS');
-        expect(component.find(components.NotieContainer).prop('active')).toBe(true);
+        expect(component.find('.notie--info').length).toBe(1);
+        expect(component.find('.notie--active').length).toBe(1);
         expect(component).toMatchSnapshot();
         jest.runTimersToTime(2000);
         component.update();
-        instance.error('Error!');
+        actions.error('Error!');
 
         /*
             Must be triggered manually since `transitionend` event
@@ -93,12 +96,12 @@ describe('<Notie />', () => {
         expect(instance.transitionendCallback).toBe(null);
         component.update();
 
-        expect(component.find('.react-notie-level--error').length).toBe(1);
-        expect(component.find('.react-notie--active').length).toBe(1);
+        expect(component.find('.notie--error').length).toBe(1);
+        expect(component.find('.notie--active').length).toBe(1);
         expect(component).toMatchSnapshot();
     });
 
-    test.skip('cleanup on unmount', () => {
+    test('cleanup on unmount', () => {
         const instance = component.instance();
         actions.info('Info!');
         actions.info('Info!');
@@ -108,15 +111,15 @@ describe('<Notie />', () => {
         expect(instance.transitionendCallback).toBe(null);
     });
 
-    test('dismiss click', () => {
+    test('dismiss on click', () => {
         actions.info('Info!');
         component.update();
-        expect(component.find(components.NotieContainer).prop('level')).toBe('INFO');
-        expect(component.find(components.NotieContainer).prop('active')).toBe(true);
+        expect(component.find('.notie--info').length).toBe(1);
+        expect(component.find('.notie--active').length).toBe(1);
         expect(component).toMatchSnapshot();
-        component.find(components.NotieContainer).simulate('click');
+        component.find('.notie-container').simulate('click');
         component.update();
-        expect(component.find(components.NotieContainer).prop('active')).toBe(false);
+        expect(component.find('.notie--active').length).toBe(0);
         expect(component).toMatchSnapshot();
     });
 
@@ -124,62 +127,121 @@ describe('<Notie />', () => {
         test('initial render', () => {
             actions.confirm('Are you sure?');
             component.update();
-            expect(component.find(components.NotieContainer).prop('level')).toBe('CONFIRM');
-            expect(component.find(components.NotieContainer).prop('active')).toBe(true);
+            expect(component.find('.notie--confirm').length).toBe(1);
+            expect(component.find('.notie--active').length).toBe(1);
+            expect(component.find('.notie-btn--ok').length).toBe(1);
+            expect(component.find('.notie-btn--cancel').length).toBe(1);
             expect(component).toMatchSnapshot();
         });
 
-        test.skip('click yes', done => {
+        test('Resolves on postive feedback', done => {
             const instance = component.instance();
-            const promise = instance.confirm('Are you sure?');
+            const promise = actions.confirm('Are you sure?');
 
             component.update();
-            component.find('.react-notie-choice--yes').simulate('click');
+            component.find('.notie-btn--ok').simulate('click');
             instance.transitionendCallback();
             expect(instance.transitionendCallback).toBe(null);
             component.update();
 
             promise.then(() => {
                 expect(component).toMatchSnapshot();
-                expect(component.find(components.NotieContainer).prop('active')).toBe(false);
+                expect(component.find('.notie--active').length).toBe(0);
                 done();
             });
         });
 
-        test.skip('click no', done => {
+        test('Rejects on negative feedback', done => {
             const instance = component.instance();
-            const promise = instance.confirm('Are you sure?');
+            const promise = actions.confirm('Are you sure?');
 
             component.update();
-            component.find('.react-notie-choice--no').simulate('click');
+            component.find('.notie-btn--cancel').simulate('click');
             instance.transitionendCallback();
             expect(instance.transitionendCallback).toBe(null);
             component.update();
             promise.catch(() => {
                 expect(component).toMatchSnapshot();
-                expect(component.find(components.NotieContainer).prop('active')).toBe(false);
+                expect(component.find('.notie--active').length).toBe(0);
                 done();
             });
         });
 
-        test.skip('no consecutive calls', () => {
+        test('Consecutive calls do not work', () => {
             const instance = component.instance();
-            instance.confirm('Are you sure?');
+            actions.confirm('Are you sure?');
             component.update();
-            expect(component.find('.react-notie-level--confirm').length).toBe(1);
+            expect(component.find('.notie--confirm').length).toBe(1);
             expect(component).toMatchSnapshot();
-            instance.info('Info!');
+            actions.info('Info!');
             component.update();
-            expect(component.find('.react-notie-level--confirm').length).toBe(1);
+            expect(component.find('.notie--confirm').length).toBe(1);
             expect(component).toMatchSnapshot();
         });
 
-        test.skip('Custom button text', () => {
+        test('Custom button text', () => {
             const instance = component.instance();
-            instance.confirm('Are you sure?', {
+            const options = {
                 yesBtnText: 'Hell Yeah!',
                 noBtnText: 'Fuck NO!'
+            };
+            actions.confirm('Are you sure?', options);
+            component.update();
+            expect(component.find('.notie-btn--ok').text()).toBe(options.yesBtnText);
+            expect(component.find('.notie-btn--cancel').text()).toBe(options.noBtnText);
+            expect(component).toMatchSnapshot();
+        });
+    });
+
+    describe('force', () => {
+        test('initial render', () => {
+            actions.force('You have done it again!');
+            component.update();
+            expect(component.find('.notie--force').length).toBe(1);
+            expect(component.find('.notie--active').length).toBe(1);
+            expect(component.find('.notie-btn--ok').length).toBe(1);
+            expect(component.find('.notie-btn--cancel').length).toBe(0);
+
+            expect(component).toMatchSnapshot();
+        });
+
+        test('Resolves on feedback', done => {
+            const instance = component.instance();
+            const promise = actions.force('You have done it again!');
+
+            component.update();
+            component.find('.notie-btn--ok').simulate('click');
+            instance.transitionendCallback();
+            expect(instance.transitionendCallback).toBe(null);
+            component.update();
+
+            promise.then(() => {
+                expect(component).toMatchSnapshot();
+                expect(component.find('.notie--active').length).toBe(0);
+                done();
             });
+        });
+
+        test('Consecutive calls do not work', () => {
+            const instance = component.instance();
+            actions.force('You have done it again!');
+            component.update();
+            expect(component.find('.notie--force').length).toBe(1);
+            expect(component).toMatchSnapshot();
+            actions.info('Info!');
+            component.update();
+            expect(component.find('.notie--force').length).toBe(1);
+            expect(component).toMatchSnapshot();
+        });
+
+        test('Custom button text', () => {
+            const instance = component.instance();
+            const options = {
+                yesBtnText: 'Hmmm OK?'
+            };
+            actions.confirm('Are you sure?', options);
+            component.update();
+            expect(component.find('.notie-btn--ok').text()).toBe(options.yesBtnText);
             expect(component).toMatchSnapshot();
         });
     });

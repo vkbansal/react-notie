@@ -32,6 +32,7 @@ export function dispatchGlobalEvent(eventName: string, opts: any, target: EventT
     // @see http://stackoverflow.com/questions/26596123/internet-explorer-9-10-11-event-constructor-doesnt-work
     let event;
 
+    /* istanbul ignore else */
     if (typeof (<any>window).CustomEvent === 'function') {
         event = new (<any>window).CustomEvent(eventName, { detail: opts });
     } else {
@@ -39,6 +40,7 @@ export function dispatchGlobalEvent(eventName: string, opts: any, target: EventT
         event.initCustomEvent(eventName, false, true, opts);
     }
 
+    /* istanbul ignore else */
     if (target) {
         target.dispatchEvent(event);
     }

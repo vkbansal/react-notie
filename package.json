@@ -4,7 +4,7 @@
     "description": "Simple notification, input and selection suite for react",
     "main": "lib/index.js",
     "module": "esm/index.js",
-    "typings": "src/index.d.ts",
+    "typings": "lib/index.d.ts",
     "scripts": {
         "test": "jest --no-cache",
         "coverage": "jest --no-cache --coverage",
@@ -22,7 +22,8 @@
     "files": [
         "esm",
         "esnext",
-        "lib"
+        "lib",
+        "css"
     ],
     "keywords": [
         "react",
