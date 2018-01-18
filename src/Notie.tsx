@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import * as cx from 'classnames';
 
 import {
     NotieActions,
@@ -11,6 +10,14 @@ import {
     NotieEventDetails
 } from './actions';
 
+import {
+    NotieContainer,
+    NotieMessage,
+    NotieChoices,
+    NotieButton,
+    NotieOverlay
+} from './components';
+
 const DEFAULT_STATE = {
     visible: false,
     locked: false,
@@ -19,9 +26,7 @@ const DEFAULT_STATE = {
     cancelBtnText: 'Cancel'
 };
 
-export interface NotieProps {
-    className?: string;
-}
+export interface NotieProps {}
 
 export interface NotieState extends Pick<NotieSettings, 'message' | 'level'> {
     visible: boolean;
@@ -68,7 +73,6 @@ export class Notie extends React.Component<NotieProps, NotieState> {
     }
 
     componentDidMount() {
-        /* istanbul ignore else */
         if (this.notieRoot) this.notieRoot.style.opacity = '0';
         window.addEventListener(NotieActions.SHOW, this.showNotie);
         document.body.appendChild(this.root);
@@ -90,7 +94,6 @@ export class Notie extends React.Component<NotieProps, NotieState> {
             this.timeout = null;
         }
 
-        /* istanbul ignore else */
         if (alreadyLoaded) alreadyLoaded = false;
 
         window.removeEventListener(NotieActions.SHOW, this.showNotie);
@@ -121,7 +124,6 @@ export class Notie extends React.Component<NotieProps, NotieState> {
             return;
         }
 
-        /* istanbul ignore else */
         if (this.notieRoot) this.notieRoot.style.opacity = '1';
 
         this.setState(state => ({
@@ -144,21 +146,15 @@ export class Notie extends React.Component<NotieProps, NotieState> {
     hideNotie = (callback?: NotieCallback) => {
         this.setState(DEFAULT_STATE as NotieState);
         this.transitionendCallback = () => {
-            /* istanbul ignore else */
-            if (this.notieRoot) {
-                this.notieRoot.style.opacity = '0';
+            if (this.notieRoot) this.notieRoot.style.opacity = '0';
+            if (typeof callback === 'function') callback();
+            this.notieRoot &&
                 this.notieRoot.removeEventListener('transitionend', this
                     .transitionendCallback as NotieCallback);
-                this.transitionendCallback = null;
-            }
-            /* istanbul ignore else */
-            if (typeof callback === 'function') callback();
+            this.transitionendCallback = null;
         };
-
-        /* istanbul ignore else */
-        if (this.notieRoot) {
+        this.notieRoot &&
             this.notieRoot.addEventListener('transitionend', this.transitionendCallback);
-        }
     };
 
     handleYes = () => this.hideNotie(this.confirmResolve);
@@ -168,13 +164,11 @@ export class Notie extends React.Component<NotieProps, NotieState> {
     handleDismiss = () => {
         if (this.state.locked) return;
 
-        /* istanbul ignore else */
         if (this.timeout) {
             clearTimeout(this.timeout);
             this.timeout = null;
         }
 
-        /* istanbul ignore else */
         if (this.state.visible) {
             this.hideNotie();
         }
@@ -185,36 +179,35 @@ export class Notie extends React.Component<NotieProps, NotieState> {
     render() {
         const { message, level, visible, position } = this.state;
         const forced = level === NotieLevel.CONFIRM || level === NotieLevel.FORCE;
-        const classes = cx(
-            'notie-container',
-            {
-                'notie--top': position === 'top',
-                'notie--bottom': position === 'bottom',
-                'notie--active': visible
-            },
-            `notie--${level.toLocaleLowerCase()}`
-        );
 
         return ReactDOM.createPortal(
-            <div className={cx('notie', this.props.className)} ref={this.rootRef}>
-                {forced && visible && <div className="notie-overlay" />}
-                <div className={classes} onClick={this.handleDismiss}>
-                    <div className="notie-message">{message}</div>
+            <div ref={this.rootRef}>
+                {forced && visible && <NotieOverlay />}
+                <NotieContainer
+                    active={visible}
+                    position={position}
+                    level={level}
+                    onClick={this.handleDismiss}>
+                    <NotieMessage>{message}</NotieMessage>
                     {forced && (
-                        <div className="notie-choices">
-                            <button className="notie-btn notie-btn--ok" onClick={this.handleYes}>
+                        <NotieChoices>
+                            <NotieButton
+                                level={
+                                    level === NotieLevel.FORCE
+                                        ? NotieLevel.ERROR
+                                        : NotieLevel.SUCCESS
+                                }
+                                onClick={this.handleYes}>
                                 {this.state.okBtnText}
-                            </button>
+                            </NotieButton>
                             {level === NotieLevel.CONFIRM && (
-                                <button
-                                    className="notie-btn notie-btn--cancel"
-                                    onClick={this.handleNo}>
+                                <NotieButton level={NotieLevel.ERROR} onClick={this.handleNo}>
                                     {this.state.cancelBtnText}
-                                </button>
+                                </NotieButton>
                             )}
-                        </div>
+                        </NotieChoices>
                     )}
-                </div>
+                </NotieContainer>
             </div>,
             this.root
         );

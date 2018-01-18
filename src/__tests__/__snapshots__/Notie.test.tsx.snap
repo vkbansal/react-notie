@@ -1,183 +1,96 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Notie /> confirm Consecutive calls do not work 1`] = `
-<Notie>
-  <div
-    className="notie"
-  >
-    <div
-      className="notie-overlay"
-    />
-    <div
-      className="notie-container notie--top notie--active notie--confirm"
-      onClick={[Function]}
-    >
-      <div
-        className="notie-message"
-      >
-        Are you sure?
-      </div>
-      <div
-        className="notie-choices"
-      >
-        <button
-          className="notie-btn notie-btn--ok"
-          onClick={[Function]}
-        >
-          OK
-        </button>
-        <button
-          className="notie-btn notie-btn--cancel"
-          onClick={[Function]}
-        >
-          Cancel
-        </button>
-      </div>
-    </div>
-  </div>
-</Notie>
-`;
-
-exports[`<Notie /> confirm Consecutive calls do not work 2`] = `
-<Notie>
-  <div
-    className="notie"
-  >
-    <div
-      className="notie-overlay"
-    />
-    <div
-      className="notie-container notie--top notie--active notie--confirm"
-      onClick={[Function]}
-    >
-      <div
-        className="notie-message"
-      >
-        Are you sure?
-      </div>
-      <div
-        className="notie-choices"
-      >
-        <button
-          className="notie-btn notie-btn--ok"
-          onClick={[Function]}
-        >
-          OK
-        </button>
-        <button
-          className="notie-btn notie-btn--cancel"
-          onClick={[Function]}
-        >
-          Cancel
-        </button>
-      </div>
-    </div>
-  </div>
-</Notie>
-`;
-
 exports[`<Notie /> confirm Custom button text 1`] = `
-<Notie>
+<Notie
+  position="top"
+  ttl={5000}
+>
   <div
-    className="notie"
+    className="react-notie react-notie--top react-notie-level--info"
   >
     <div
-      className="notie-overlay"
-    />
-    <div
-      className="notie-container notie--top notie--active notie--confirm"
-      onClick={[Function]}
+      className="react-notie-container"
     >
       <div
-        className="notie-message"
+        className="react-notie-message"
+      />
+      <div
+        className="react-notie-dismiss"
+        onClick={[Function]}
+      />
+    </div>
+  </div>
+</Notie>
+`;
+
+exports[`<Notie /> confirm click no 1`] = `
+<Notie
+  position="top"
+  ttl={5000}
+>
+  <div
+    className="react-notie react-notie--top react-notie-level--confirm"
+  >
+    <div
+      className="react-notie-container"
+    >
+      <div
+        className="react-notie-message"
       >
         Are you sure?
       </div>
       <div
-        className="notie-choices"
+        className="react-notie-choices"
       >
-        <button
-          className="notie-btn notie-btn--ok"
+        <div
+          className="react-notie-choice react-notie-choice--yes"
           onClick={[Function]}
         >
-          Hell Yeah!
-        </button>
-        <button
-          className="notie-btn notie-btn--cancel"
+          Yes
+        </div>
+        <div
+          className="react-notie-choice react-notie-choice--no"
           onClick={[Function]}
         >
-          Fuck NO!
-        </button>
+          No
+        </div>
       </div>
     </div>
   </div>
 </Notie>
 `;
 
-exports[`<Notie /> confirm Rejects on negative feedback 1`] = `
-<Notie>
+exports[`<Notie /> confirm click yes 1`] = `
+<Notie
+  position="top"
+  ttl={5000}
+>
   <div
-    className="notie"
+    className="react-notie react-notie--top react-notie-level--confirm"
   >
     <div
-      className="notie-container notie--top notie--confirm"
-      onClick={[Function]}
+      className="react-notie-container"
     >
       <div
-        className="notie-message"
+        className="react-notie-message"
       >
         Are you sure?
       </div>
       <div
-        className="notie-choices"
+        className="react-notie-choices"
       >
-        <button
-          className="notie-btn notie-btn--ok"
+        <div
+          className="react-notie-choice react-notie-choice--yes"
           onClick={[Function]}
         >
-          OK
-        </button>
-        <button
-          className="notie-btn notie-btn--cancel"
+          Yes
+        </div>
+        <div
+          className="react-notie-choice react-notie-choice--no"
           onClick={[Function]}
         >
-          Cancel
-        </button>
-      </div>
-    </div>
-  </div>
-</Notie>
-`;
-
-exports[`<Notie /> confirm Resolves on postive feedback 1`] = `
-<Notie>
-  <div
-    className="notie"
-  >
-    <div
-      className="notie-container notie--top notie--confirm"
-      onClick={[Function]}
-    >
-      <div
-        className="notie-message"
-      >
-        Are you sure?
-      </div>
-      <div
-        className="notie-choices"
-      >
-        <button
-          className="notie-btn notie-btn--ok"
-          onClick={[Function]}
-        >
-          OK
-        </button>
-        <button
-          className="notie-btn notie-btn--cancel"
-          onClick={[Function]}
-        >
-          Cancel
-        </button>
+          No
+        </div>
       </div>
     </div>
   </div>
@@ -185,37 +98,208 @@ exports[`<Notie /> confirm Resolves on postive feedback 1`] = `
 `;
 
 exports[`<Notie /> confirm initial render 1`] = `
+.glamor-1,
+[data-glamor-1] {
+  padding: 20px;
+}
+
+.glamor-5,
+[data-glamor-5] {
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  color: #fff;
+  transition: -webkit-transform 0.3s ease-in-out,transform 0.3s ease-in-out;
+  margin: 0 auto;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  left: 0;
+  pointer-events: auto;
+  top: 0;
+  bottom: auto;
+  transform: translate(0, 0);
+  background-color: #20a0ff;
+  -webkit-transition: -webkit-transform 0.3s ease-in-out,transform 0.3s ease-in-out;
+  -moz-transition: transform 0.3s ease-in-out;
+  -webkit-transform: translate(0, 0);
+}
+
+.glamor-0,
+[data-glamor-0] {
+  position: fixed;
+  min-height: 100vh;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.65);
+}
+
+.glamor-4,
+[data-glamor-4] {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+}
+
+.glamor-2,
+[data-glamor-2] {
+  padding: 20px;
+  flex-grow: 1;
+  border: none;
+  text-align: center;
+  cursor: pointer;
+  background-color: #13ce66;
+  -webkit-flex-grow: 1;
+}
+
+.glamor-3,
+[data-glamor-3] {
+  padding: 20px;
+  flex-grow: 1;
+  border: none;
+  text-align: center;
+  cursor: pointer;
+  background-color: #ff4949;
+  -webkit-flex-grow: 1;
+}
+
 <Notie>
-  <div
-    className="notie"
-  >
-    <div
-      className="notie-overlay"
-    />
-    <div
-      className="notie-container notie--top notie--active notie--confirm"
+  <div>
+    <NotieOverlay>
+      <div
+        className="glamor-0"
+      />
+    </NotieOverlay>
+    <NotieContainer
+      active={true}
+      level="CONFIRM"
       onClick={[Function]}
+      position="top"
     >
       <div
-        className="notie-message"
+        className="glamor-5"
+        onClick={[Function]}
+      >
+        <NotieMessage>
+          <div
+            className="glamor-1"
+          >
+            Are you sure?
+          </div>
+        </NotieMessage>
+        <NotieChoices>
+          <div
+            className="glamor-4"
+          >
+            <NotieButton
+              level="SUCCESS"
+              onClick={[Function]}
+            >
+              <button
+                className="glamor-2"
+                onClick={[Function]}
+              >
+                OK
+              </button>
+            </NotieButton>
+            <NotieButton
+              level="ERROR"
+              onClick={[Function]}
+            >
+              <button
+                className="glamor-3"
+                onClick={[Function]}
+              >
+                Cancel
+              </button>
+            </NotieButton>
+          </div>
+        </NotieChoices>
+      </div>
+    </NotieContainer>
+  </div>
+</Notie>
+`;
+
+exports[`<Notie /> confirm no consecutive calls 1`] = `
+<Notie
+  position="top"
+  ttl={5000}
+>
+  <div
+    className="react-notie react-notie--top react-notie-level--confirm react-notie--active"
+  >
+    <div
+      className="react-notie-overlay"
+    />
+    <div
+      className="react-notie-container"
+    >
+      <div
+        className="react-notie-message"
       >
         Are you sure?
       </div>
       <div
-        className="notie-choices"
+        className="react-notie-choices"
       >
-        <button
-          className="notie-btn notie-btn--ok"
+        <div
+          className="react-notie-choice react-notie-choice--yes"
           onClick={[Function]}
         >
-          OK
-        </button>
-        <button
-          className="notie-btn notie-btn--cancel"
+          Yes
+        </div>
+        <div
+          className="react-notie-choice react-notie-choice--no"
           onClick={[Function]}
         >
-          Cancel
-        </button>
+          No
+        </div>
+      </div>
+    </div>
+  </div>
+</Notie>
+`;
+
+exports[`<Notie /> confirm no consecutive calls 2`] = `
+<Notie
+  position="top"
+  ttl={5000}
+>
+  <div
+    className="react-notie react-notie--top react-notie-level--confirm react-notie--active"
+  >
+    <div
+      className="react-notie-overlay"
+    />
+    <div
+      className="react-notie-container"
+    >
+      <div
+        className="react-notie-message"
+      >
+        Are you sure?
+      </div>
+      <div
+        className="react-notie-choices"
+      >
+        <div
+          className="react-notie-choice react-notie-choice--yes"
+          onClick={[Function]}
+        >
+          Yes
+        </div>
+        <div
+          className="react-notie-choice react-notie-choice--no"
+          onClick={[Function]}
+        >
+          No
+        </div>
       </div>
     </div>
   </div>
@@ -223,331 +307,390 @@ exports[`<Notie /> confirm initial render 1`] = `
 `;
 
 exports[`<Notie /> consecutive calls 1`] = `
-<Notie>
+<Notie
+  position="top"
+  ttl={5000}
+>
   <div
-    className="notie"
+    className="react-notie react-notie--top react-notie-level--info react-notie--active"
   >
     <div
-      className="notie-container notie--top notie--active notie--info"
-      onClick={[Function]}
+      className="react-notie-container"
     >
       <div
-        className="notie-message"
+        className="react-notie-message"
       >
         Info!
       </div>
+      <div
+        className="react-notie-dismiss"
+        onClick={[Function]}
+      />
     </div>
   </div>
 </Notie>
 `;
 
 exports[`<Notie /> consecutive calls 2`] = `
-<Notie>
+<Notie
+  position="top"
+  ttl={5000}
+>
   <div
-    className="notie"
+    className="react-notie react-notie--top react-notie-level--error react-notie--active"
   >
     <div
-      className="notie-container notie--top notie--active notie--error"
-      onClick={[Function]}
+      className="react-notie-container"
     >
       <div
-        className="notie-message"
+        className="react-notie-message"
       >
         Error!
       </div>
+      <div
+        className="react-notie-dismiss"
+        onClick={[Function]}
+      />
     </div>
   </div>
 </Notie>
 `;
 
-exports[`<Notie /> dismiss on click 1`] = `
+exports[`<Notie /> dismiss click 1`] = `
+.glamor-0,
+[data-glamor-0] {
+  padding: 20px;
+}
+
+.glamor-1,
+[data-glamor-1] {
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  color: #fff;
+  transition: -webkit-transform 0.3s ease-in-out,transform 0.3s ease-in-out;
+  margin: 0 auto;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  left: 0;
+  pointer-events: auto;
+  top: 0;
+  bottom: auto;
+  transform: translate(0, 0);
+  background-color: #20a0ff;
+  -webkit-transition: -webkit-transform 0.3s ease-in-out,transform 0.3s ease-in-out;
+  -moz-transition: transform 0.3s ease-in-out;
+  -webkit-transform: translate(0, 0);
+}
+
 <Notie>
-  <div
-    className="notie"
-  >
-    <div
-      className="notie-container notie--top notie--active notie--info"
+  <div>
+    <NotieContainer
+      active={true}
+      level="INFO"
       onClick={[Function]}
+      position="top"
     >
       <div
-        className="notie-message"
+        className="glamor-1"
+        onClick={[Function]}
       >
-        Info!
+        <NotieMessage>
+          <div
+            className="glamor-0"
+          >
+            Info!
+          </div>
+        </NotieMessage>
       </div>
-    </div>
+    </NotieContainer>
   </div>
 </Notie>
 `;
 
-exports[`<Notie /> dismiss on click 2`] = `
+exports[`<Notie /> dismiss click 2`] = `
+.glamor-1,
+[data-glamor-1] {
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  color: #fff;
+  transition: -webkit-transform 0.3s ease-in-out,transform 0.3s ease-in-out;
+  margin: 0 auto;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  left: 0;
+  pointer-events: none;
+  top: 0;
+  bottom: auto;
+  transform: translate(0, -106%);
+  background-color: #20a0ff;
+  -webkit-transition: -webkit-transform 0.3s ease-in-out,transform 0.3s ease-in-out;
+  -moz-transition: transform 0.3s ease-in-out;
+  -webkit-transform: translate(0, -106%);
+}
+
+.glamor-0,
+[data-glamor-0] {
+  padding: 20px;
+}
+
 <Notie>
-  <div
-    className="notie"
-  >
-    <div
-      className="notie-container notie--top notie--info"
+  <div>
+    <NotieContainer
+      active={false}
+      level="INFO"
       onClick={[Function]}
+      position="top"
     >
       <div
-        className="notie-message"
+        className="glamor-1"
+        onClick={[Function]}
       >
-        Info!
+        <NotieMessage>
+          <div
+            className="glamor-0"
+          >
+            Info!
+          </div>
+        </NotieMessage>
       </div>
-    </div>
+    </NotieContainer>
   </div>
 </Notie>
 `;
 
 exports[`<Notie /> error message 1`] = `
+.glamor-0,
+[data-glamor-0] {
+  padding: 20px;
+}
+
+.glamor-1,
+[data-glamor-1] {
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  color: #fff;
+  transition: -webkit-transform 0.3s ease-in-out,transform 0.3s ease-in-out;
+  margin: 0 auto;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  left: 0;
+  pointer-events: auto;
+  top: 0;
+  bottom: auto;
+  transform: translate(0, 0);
+  background-color: #ff4949;
+  -webkit-transition: -webkit-transform 0.3s ease-in-out,transform 0.3s ease-in-out;
+  -moz-transition: transform 0.3s ease-in-out;
+  -webkit-transform: translate(0, 0);
+}
+
 <Notie>
-  <div
-    className="notie"
-  >
-    <div
-      className="notie-container notie--top notie--active notie--error"
+  <div>
+    <NotieContainer
+      active={true}
+      level="ERROR"
       onClick={[Function]}
+      position="top"
     >
       <div
-        className="notie-message"
+        className="glamor-1"
+        onClick={[Function]}
       >
-        Error!
+        <NotieMessage>
+          <div
+            className="glamor-0"
+          >
+            Error!
+          </div>
+        </NotieMessage>
       </div>
-    </div>
+    </NotieContainer>
   </div>
 </Notie>
 `;
 
 exports[`<Notie /> error message 2`] = `
-<Notie>
-  <div
-    className="notie"
-  >
-    <div
-      className="notie-container notie--top notie--error"
-      onClick={[Function]}
-    >
-      <div
-        className="notie-message"
-      >
-        Error!
-      </div>
-    </div>
-  </div>
-</Notie>
-`;
+.glamor-0,
+[data-glamor-0] {
+  padding: 20px;
+}
 
-exports[`<Notie /> force Consecutive calls do not work 1`] = `
-<Notie>
-  <div
-    className="notie"
-  >
-    <div
-      className="notie-overlay"
-    />
-    <div
-      className="notie-container notie--top notie--active notie--force"
-      onClick={[Function]}
-    >
-      <div
-        className="notie-message"
-      >
-        You have done it again!
-      </div>
-      <div
-        className="notie-choices"
-      >
-        <button
-          className="notie-btn notie-btn--ok"
-          onClick={[Function]}
-        >
-          OK
-        </button>
-      </div>
-    </div>
-  </div>
-</Notie>
-`;
+.glamor-1,
+[data-glamor-1] {
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  color: #fff;
+  transition: -webkit-transform 0.3s ease-in-out,transform 0.3s ease-in-out;
+  margin: 0 auto;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  left: 0;
+  pointer-events: none;
+  top: 0;
+  bottom: auto;
+  transform: translate(0, -106%);
+  background-color: #ff4949;
+  -webkit-transition: -webkit-transform 0.3s ease-in-out,transform 0.3s ease-in-out;
+  -moz-transition: transform 0.3s ease-in-out;
+  -webkit-transform: translate(0, -106%);
+}
 
-exports[`<Notie /> force Consecutive calls do not work 2`] = `
 <Notie>
-  <div
-    className="notie"
-  >
-    <div
-      className="notie-overlay"
-    />
-    <div
-      className="notie-container notie--top notie--active notie--force"
+  <div>
+    <NotieContainer
+      active={false}
+      level="ERROR"
       onClick={[Function]}
+      position="top"
     >
       <div
-        className="notie-message"
+        className="glamor-1"
+        onClick={[Function]}
       >
-        You have done it again!
+        <NotieMessage>
+          <div
+            className="glamor-0"
+          >
+            Error!
+          </div>
+        </NotieMessage>
       </div>
-      <div
-        className="notie-choices"
-      >
-        <button
-          className="notie-btn notie-btn--ok"
-          onClick={[Function]}
-        >
-          OK
-        </button>
-      </div>
-    </div>
-  </div>
-</Notie>
-`;
-
-exports[`<Notie /> force Custom button text 1`] = `
-<Notie>
-  <div
-    className="notie"
-  >
-    <div
-      className="notie-overlay"
-    />
-    <div
-      className="notie-container notie--top notie--active notie--confirm"
-      onClick={[Function]}
-    >
-      <div
-        className="notie-message"
-      >
-        Are you sure?
-      </div>
-      <div
-        className="notie-choices"
-      >
-        <button
-          className="notie-btn notie-btn--ok"
-          onClick={[Function]}
-        >
-          Hmmm OK?
-        </button>
-        <button
-          className="notie-btn notie-btn--cancel"
-          onClick={[Function]}
-        >
-          Cancel
-        </button>
-      </div>
-    </div>
-  </div>
-</Notie>
-`;
-
-exports[`<Notie /> force Resolves on feedback 1`] = `
-<Notie>
-  <div
-    className="notie"
-  >
-    <div
-      className="notie-container notie--top notie--force"
-      onClick={[Function]}
-    >
-      <div
-        className="notie-message"
-      >
-        You have done it again!
-      </div>
-      <div
-        className="notie-choices"
-      >
-        <button
-          className="notie-btn notie-btn--ok"
-          onClick={[Function]}
-        >
-          OK
-        </button>
-      </div>
-    </div>
-  </div>
-</Notie>
-`;
-
-exports[`<Notie /> force initial render 1`] = `
-<Notie>
-  <div
-    className="notie"
-  >
-    <div
-      className="notie-overlay"
-    />
-    <div
-      className="notie-container notie--top notie--active notie--force"
-      onClick={[Function]}
-    >
-      <div
-        className="notie-message"
-      >
-        You have done it again!
-      </div>
-      <div
-        className="notie-choices"
-      >
-        <button
-          className="notie-btn notie-btn--ok"
-          onClick={[Function]}
-        >
-          OK
-        </button>
-      </div>
-    </div>
+    </NotieContainer>
   </div>
 </Notie>
 `;
 
 exports[`<Notie /> info message 1`] = `
+.glamor-0,
+[data-glamor-0] {
+  padding: 20px;
+}
+
+.glamor-1,
+[data-glamor-1] {
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  color: #fff;
+  transition: -webkit-transform 0.3s ease-in-out,transform 0.3s ease-in-out;
+  margin: 0 auto;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  left: 0;
+  pointer-events: auto;
+  top: 0;
+  bottom: auto;
+  transform: translate(0, 0);
+  background-color: #20a0ff;
+  -webkit-transition: -webkit-transform 0.3s ease-in-out,transform 0.3s ease-in-out;
+  -moz-transition: transform 0.3s ease-in-out;
+  -webkit-transform: translate(0, 0);
+}
+
 <Notie>
-  <div
-    className="notie"
-  >
-    <div
-      className="notie-container notie--top notie--active notie--info"
+  <div>
+    <NotieContainer
+      active={true}
+      level="INFO"
       onClick={[Function]}
+      position="top"
     >
       <div
-        className="notie-message"
+        className="glamor-1"
+        onClick={[Function]}
       >
-        Info!
+        <NotieMessage>
+          <div
+            className="glamor-0"
+          >
+            Info!
+          </div>
+        </NotieMessage>
       </div>
-    </div>
+    </NotieContainer>
   </div>
 </Notie>
 `;
 
 exports[`<Notie /> info message 2`] = `
+.glamor-1,
+[data-glamor-1] {
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  color: #fff;
+  transition: -webkit-transform 0.3s ease-in-out,transform 0.3s ease-in-out;
+  margin: 0 auto;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  left: 0;
+  pointer-events: none;
+  top: 0;
+  bottom: auto;
+  transform: translate(0, -106%);
+  background-color: #20a0ff;
+  -webkit-transition: -webkit-transform 0.3s ease-in-out,transform 0.3s ease-in-out;
+  -moz-transition: transform 0.3s ease-in-out;
+  -webkit-transform: translate(0, -106%);
+}
+
+.glamor-0,
+[data-glamor-0] {
+  padding: 20px;
+}
+
 <Notie>
-  <div
-    className="notie"
-  >
-    <div
-      className="notie-container notie--top notie--info"
+  <div>
+    <NotieContainer
+      active={false}
+      level="INFO"
       onClick={[Function]}
+      position="top"
     >
       <div
-        className="notie-message"
+        className="glamor-1"
+        onClick={[Function]}
       >
-        Info!
+        <NotieMessage>
+          <div
+            className="glamor-0"
+          >
+            Info!
+          </div>
+        </NotieMessage>
       </div>
-    </div>
+    </NotieContainer>
   </div>
 </Notie>
 `;
 
 exports[`<Notie /> initial render 1`] = `
-<Notie>
+<Notie
+  position="top"
+  ttl={5000}
+>
   <div
-    className="notie"
+    className="react-notie react-notie--top react-notie-level--info"
   >
     <div
-      className="notie-container notie--top notie--info"
-      onClick={[Function]}
+      className="react-notie-container"
     >
       <div
-        className="notie-message"
+        className="react-notie-message"
+      />
+      <div
+        className="react-notie-dismiss"
+        onClick={[Function]}
       />
     </div>
   </div>
@@ -555,77 +698,213 @@ exports[`<Notie /> initial render 1`] = `
 `;
 
 exports[`<Notie /> success message 1`] = `
+.glamor-0,
+[data-glamor-0] {
+  padding: 20px;
+}
+
+.glamor-1,
+[data-glamor-1] {
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  color: #fff;
+  transition: -webkit-transform 0.3s ease-in-out,transform 0.3s ease-in-out;
+  margin: 0 auto;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  left: 0;
+  pointer-events: auto;
+  top: 0;
+  bottom: auto;
+  transform: translate(0, 0);
+  background-color: #13ce66;
+  -webkit-transition: -webkit-transform 0.3s ease-in-out,transform 0.3s ease-in-out;
+  -moz-transition: transform 0.3s ease-in-out;
+  -webkit-transform: translate(0, 0);
+}
+
 <Notie>
-  <div
-    className="notie"
-  >
-    <div
-      className="notie-container notie--top notie--active notie--success"
+  <div>
+    <NotieContainer
+      active={true}
+      level="SUCCESS"
       onClick={[Function]}
+      position="top"
     >
       <div
-        className="notie-message"
+        className="glamor-1"
+        onClick={[Function]}
       >
-        Success!
+        <NotieMessage>
+          <div
+            className="glamor-0"
+          >
+            Success!
+          </div>
+        </NotieMessage>
       </div>
-    </div>
+    </NotieContainer>
   </div>
 </Notie>
 `;
 
 exports[`<Notie /> success message 2`] = `
+.glamor-0,
+[data-glamor-0] {
+  padding: 20px;
+}
+
+.glamor-1,
+[data-glamor-1] {
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  color: #fff;
+  transition: -webkit-transform 0.3s ease-in-out,transform 0.3s ease-in-out;
+  margin: 0 auto;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  left: 0;
+  pointer-events: none;
+  top: 0;
+  bottom: auto;
+  transform: translate(0, -106%);
+  background-color: #13ce66;
+  -webkit-transition: -webkit-transform 0.3s ease-in-out,transform 0.3s ease-in-out;
+  -moz-transition: transform 0.3s ease-in-out;
+  -webkit-transform: translate(0, -106%);
+}
+
 <Notie>
-  <div
-    className="notie"
-  >
-    <div
-      className="notie-container notie--top notie--success"
+  <div>
+    <NotieContainer
+      active={false}
+      level="SUCCESS"
       onClick={[Function]}
+      position="top"
     >
       <div
-        className="notie-message"
+        className="glamor-1"
+        onClick={[Function]}
       >
-        Success!
+        <NotieMessage>
+          <div
+            className="glamor-0"
+          >
+            Success!
+          </div>
+        </NotieMessage>
       </div>
-    </div>
+    </NotieContainer>
   </div>
 </Notie>
 `;
 
 exports[`<Notie /> warn message 1`] = `
+.glamor-0,
+[data-glamor-0] {
+  padding: 20px;
+}
+
+.glamor-1,
+[data-glamor-1] {
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  color: #fff;
+  transition: -webkit-transform 0.3s ease-in-out,transform 0.3s ease-in-out;
+  margin: 0 auto;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  left: 0;
+  pointer-events: auto;
+  top: 0;
+  bottom: auto;
+  transform: translate(0, 0);
+  background-color: #f5be4b;
+  -webkit-transition: -webkit-transform 0.3s ease-in-out,transform 0.3s ease-in-out;
+  -moz-transition: transform 0.3s ease-in-out;
+  -webkit-transform: translate(0, 0);
+}
+
 <Notie>
-  <div
-    className="notie"
-  >
-    <div
-      className="notie-container notie--top notie--active notie--warn"
+  <div>
+    <NotieContainer
+      active={true}
+      level="WARN"
       onClick={[Function]}
+      position="top"
     >
       <div
-        className="notie-message"
+        className="glamor-1"
+        onClick={[Function]}
       >
-        Warn!
+        <NotieMessage>
+          <div
+            className="glamor-0"
+          >
+            Warn!
+          </div>
+        </NotieMessage>
       </div>
-    </div>
+    </NotieContainer>
   </div>
 </Notie>
 `;
 
 exports[`<Notie /> warn message 2`] = `
+.glamor-0,
+[data-glamor-0] {
+  padding: 20px;
+}
+
+.glamor-1,
+[data-glamor-1] {
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  color: #fff;
+  transition: -webkit-transform 0.3s ease-in-out,transform 0.3s ease-in-out;
+  margin: 0 auto;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  left: 0;
+  pointer-events: none;
+  top: 0;
+  bottom: auto;
+  transform: translate(0, -106%);
+  background-color: #f5be4b;
+  -webkit-transition: -webkit-transform 0.3s ease-in-out,transform 0.3s ease-in-out;
+  -moz-transition: transform 0.3s ease-in-out;
+  -webkit-transform: translate(0, -106%);
+}
+
 <Notie>
-  <div
-    className="notie"
-  >
-    <div
-      className="notie-container notie--top notie--warn"
+  <div>
+    <NotieContainer
+      active={false}
+      level="WARN"
       onClick={[Function]}
+      position="top"
     >
       <div
-        className="notie-message"
+        className="glamor-1"
+        onClick={[Function]}
       >
-        Warn!
+        <NotieMessage>
+          <div
+            className="glamor-0"
+          >
+            Warn!
+          </div>
+        </NotieMessage>
       </div>
-    </div>
+    </NotieContainer>
   </div>
 </Notie>
 `;
