@@ -1,4 +1,27 @@
 import { Notie } from './Notie';
-import { alert, success, error, warn, confirm, info, force, NotieSettings } from './actions';
+import {
+    notieAlert,
+    notieSuccess,
+    notieError,
+    notieWarn,
+    notieConfirm,
+    notieInfo,
+    notieForce,
+    NotieSettings,
+    NotieActions,
+    NotieLevel
+} from './actions';
 
-export { Notie, alert, success, error, warn, confirm, info, force, NotieSettings };
+export {
+    Notie,
+    notieAlert,
+    notieSuccess,
+    notieError,
+    notieWarn,
+    notieConfirm,
+    notieInfo,
+    notieForce,
+    NotieSettings,
+    NotieActions,
+    NotieLevel
+};

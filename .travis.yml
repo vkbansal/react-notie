@@ -1,24 +1,7 @@
 language: node_js
 node_js:
-  - 8
+    - 8
 after_success:
-  - npm run coveralls
+    - npm run coveralls
 script:
-  - npm test
-before_deploy:
-  - NODE_ENV=production npm run build:examples
-env:
-  global:
-    - GITHUB_REPO: vkbansal/react-notie
-deploy:
-  provider: s3
-  access_key_id: $AWS_ACCESS_KEY_ID
-  secret_access_key: $AWS_SECRET_ACCESS_KEY
-  bucket: aws-website-my-website-mr5h4
-  local-dir: public
-  upload-dir: react-notie
-  skip_cleanup: true
-  default_text_charset: 'utf-8'
-  on:
-    branch: master
-    repo: vkbansal/react-notie
+    - npm test

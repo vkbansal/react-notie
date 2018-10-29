@@ -1,0 +1,93 @@
+{
+    "name": "react-notie",
+    "version": "2.0.0-alpha.2",
+    "description": "Simple notification, input and selection suite for react",
+    "main": "lib/index.js",
+    "module": "esm/index.js",
+    "scripts": {
+        "test": "jest --no-cache",
+        "coverage": "jest --no-cache --coverage",
+        "clean": "rimraf ./esm ./lib ./esnext",
+        "build": "yarn run clean && yarn run build:all",
+        "build:all": "yarn run build:esm && yarn run build:cjs && yarn run build:esnext",
+        "build:esm": "tsc --target es5 --module es6 --lib es2015,dom --outDir ./esm",
+        "build:cjs": "tsc --target es5 --module commonjs --lib es2015,dom --outDir ./lib",
+        "build:esnext": "tsc --target es6 --module es6 --outDir ./esnext",
+        "prepublishOnly": "yarn test && yarn run build"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/vkbansal/react-notie.git"
+    },
+    "files": [
+        "esm",
+        "esnext",
+        "lib"
+    ],
+    "keywords": [
+        "react",
+        "reactjs",
+        "react-component",
+        "notification",
+        "confirm",
+        "alert",
+        "toast",
+        "notify"
+    ],
+    "author": "Vivek Kumar Bansal <contact@vkbansal.me>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/vkbansal/react-notie/issues"
+    },
+    "homepage": "https://github.com/vkbansal/react-notie#readme",
+    "dependencies": {
+        "classnames": "~2.2.5"
+    },
+    "peerDependencies": {
+        "emotion": "^9.0.0",
+        "react": "^16.0.0",
+        "react-dom": "^16.0.0",
+        "react-emotion": "^9.0.0"
+    },
+    "devDependencies": {
+        "@types/classnames": "~2.2.3",
+        "@types/enzyme": "~3.1.6",
+        "@types/jest": "~23.3.5",
+        "@types/react": "~16.4.16",
+        "@types/react-dom": "~16.0.3",
+        "cross-env": "~5.2.0",
+        "enzyme": "~3.7.0",
+        "enzyme-adapter-react-16": "~1.6.0",
+        "enzyme-to-json": "~3.3.0",
+        "jest": "~23.6.0",
+        "jsdom": "~12.2.0",
+        "react": "~16.5.2",
+        "react-dom": "~16.5.2",
+        "rimraf": "~2.6.1",
+        "ts-jest": "~23.10.4",
+        "typescript": "~3.1.2"
+    },
+    "jest": {
+        "setupFiles": [
+            "<rootDir>/.jest-setup.js"
+        ],
+        "testMatch": [
+            "**/?(*.)(spec|test).ts?(x)"
+        ],
+        "moduleFileExtensions": [
+            "ts",
+            "tsx",
+            "js"
+        ],
+        "transform": {
+            "^.+\\.tsx?$": "ts-jest"
+        },
+        "snapshotSerializers": [
+            "enzyme-to-json/serializer"
+        ],
+        "collectCoverageFrom": [
+            "**/*.{ts,tsx}",
+            "!**/__tests__/**"
+        ]
+    }
+}

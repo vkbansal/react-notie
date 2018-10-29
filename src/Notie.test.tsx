@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
 
-import { Notie } from '../Notie';
-import * as actions from '../actions';
-import * as components from '../components';
+import { Notie } from './Notie';
+import * as actions from './actions';
+import * as components from './components';
 
 jest.useFakeTimers();
 
@@ -26,7 +26,7 @@ describe('<Notie />', () => {
     });
 
     test('success message', () => {
-        actions.success('Success!');
+        actions.notieSuccess('Success!');
         component.update();
         expect(component.find(components.NotieContainer).prop('level')).toBe('SUCCESS');
         expect(component.find(components.NotieContainer).prop('active')).toBe(true);
@@ -38,7 +38,7 @@ describe('<Notie />', () => {
     });
 
     test('warn message', () => {
-        actions.warn('Warn!');
+        actions.notieWarn('Warn!');
         component.update();
         expect(component.find(components.NotieContainer).prop('level')).toBe('WARN');
         expect(component.find(components.NotieContainer).prop('active')).toBe(true);
@@ -50,7 +50,7 @@ describe('<Notie />', () => {
     });
 
     test('error message', () => {
-        actions.error('Error!');
+        actions.notieError('Error!');
         component.update();
         expect(component.find(components.NotieContainer).prop('level')).toBe('ERROR');
         expect(component.find(components.NotieContainer).prop('active')).toBe(true);
@@ -62,7 +62,7 @@ describe('<Notie />', () => {
     });
 
     test('info message', () => {
-        actions.info('Info!');
+        actions.notieInfo('Info!');
         component.update();
         expect(component.find(components.NotieContainer).prop('level')).toBe('INFO');
         expect(component.find(components.NotieContainer).prop('active')).toBe(true);
@@ -100,8 +100,8 @@ describe('<Notie />', () => {
 
     test.skip('cleanup on unmount', () => {
         const instance = component.instance();
-        actions.info('Info!');
-        actions.info('Info!');
+        actions.notieInfo('Info!');
+        actions.notieInfo('Info!');
         jest.runTimersToTime(2000);
         component.update();
         component.unmount();
@@ -109,7 +109,7 @@ describe('<Notie />', () => {
     });
 
     test('dismiss click', () => {
-        actions.info('Info!');
+        actions.notieInfo('Info!');
         component.update();
         expect(component.find(components.NotieContainer).prop('level')).toBe('INFO');
         expect(component.find(components.NotieContainer).prop('active')).toBe(true);
@@ -122,7 +122,7 @@ describe('<Notie />', () => {
 
     describe('confirm', () => {
         test('initial render', () => {
-            actions.confirm('Are you sure?');
+            actions.notieConfirm('Are you sure?');
             component.update();
             expect(component.find(components.NotieContainer).prop('level')).toBe('CONFIRM');
             expect(component.find(components.NotieContainer).prop('active')).toBe(true);

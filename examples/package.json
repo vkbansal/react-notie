@@ -1,0 +1,22 @@
+{
+  "name": "react-notie-examples",
+  "description": "Examples for react-notie",
+  "version": "0.0.1",
+  "private": true,
+  "main": "index.tsx",
+  "dependencies": {
+    "@types/react": "~16.4.14",
+    "@types/react-dom": "~16.0.7",
+    "react": "~16.5.1",
+    "react-dom": "~16.5.1",
+    "react-notie": "2.0.0-alpha.2",
+    "react-scripts-ts": "~3.1.0",
+    "tslint-vkbansal": "gist:c4922663993ada71f43352107f86c4fd",
+    "typescript": "~3.1.2"
+  },
+  "scripts": {
+    "start": "react-scripts-ts start",
+    "build": "react-scripts-ts build",
+    "eject": "react-scripts-ts eject"
+  }
+}

@@ -1,5 +1,4 @@
 node_modules/
-public/
 lib/
 esnext/
 esm/
@@ -8,5 +7,3 @@ coverage/
 bundle.js
 *.log
 *.js.map
-jsconfig.json
-examples/notie.css

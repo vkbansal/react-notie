@@ -1,10 +1,8 @@
-import * as React from 'react';
-import glamorous, { GlamorousComponent } from 'glamorous';
+import styled from 'react-emotion';
 
 import { NotieLevel } from './actions';
 
 export interface NotieContainerProps {
-    active: boolean;
     position: 'top' | 'bottom';
     level: NotieLevel;
 }
@@ -18,37 +16,47 @@ const colors: Record<NotieLevel, string> = {
     [NotieLevel.FORCE]: '#20a0ff'
 };
 
-export const NotieContainer: GlamorousComponent<
-    React.HTMLProps<HTMLDivElement> & NotieContainerProps,
-    NotieContainerProps
-> = glamorous<NotieContainerProps>('div')(
+export const NOTIE_CLOSE_CLASS = `notie-${Math.random()
+    .toString(36)
+    .slice(2)}`;
+
+export const NotieContainer = styled('dialog')(
     {
         position: 'fixed',
         width: '100%',
         textAlign: 'center',
         fontSize: '14px',
         color: '#fff',
-        transition: 'transform 0.3s ease-in-out',
         margin: '0 auto',
         whiteSpace: 'nowrap',
-        // overflow: 'hidden',
+        border: 'none',
         textOverflow: 'ellipsis',
-        left: 0
+        left: 0,
+        pointerEvents: 'none',
+        '&[open]': {
+            pointerEvents: 'auto'
+        }
     },
-    props => ({
-        pointerEvents: props.active ? 'auto' : 'none',
+    (props: NotieContainerProps) => ({
         top: props.position === 'top' ? 0 : 'auto',
         bottom: props.position === 'bottom' ? 0 : 'auto',
-        transform: props.active
-            ? 'translate(0, 0)'
-            : props.position === 'top' ? 'translate(0, -106%)' : 'translate(0, 106%)',
         backgroundColor: props.level in colors ? colors[props.level] : '#444'
+        // '&[open]': {
+        //     animation: `${
+        //         props.position === 'top' ? animateInFromTop : animateInFromBottom
+        //     } 0.3s forwards`
+        // },
+        // [`&.${NOTIE_CLOSE_CLASS}`]: {
+        //     animation: `${
+        //         props.position === 'top' ? animateOutToTop : animateOutToBottom
+        //     } 0.3s forwards`
+        // }
     })
 );
 
 NotieContainer.displayName = 'NotieContainer';
 
-export const NotieOverlay = glamorous('div')({
+export const NotieOverlay = styled('div')({
     position: 'fixed',
     minHeight: '100vh',
     height: '100%',
@@ -60,13 +68,13 @@ export const NotieOverlay = glamorous('div')({
 
 NotieOverlay.displayName = 'NotieOverlay';
 
-export const NotieMessage = glamorous('div')({
+export const NotieMessage = styled('div')({
     padding: '20px'
 });
 
 NotieMessage.displayName = 'NotieMessage';
 
-export const NotieChoices = glamorous('div')({
+export const NotieChoices = styled('div')({
     display: 'flex',
     width: '100%'
 });
@@ -77,7 +85,7 @@ export interface NotieButtonProps {
     level: NotieLevel;
 }
 
-export const NotieButton = glamorous<NotieButtonProps>('button')(
+export const NotieButton = styled('button')(
     {
         padding: '20px',
         flexGrow: 1,
@@ -85,7 +93,7 @@ export const NotieButton = glamorous<NotieButtonProps>('button')(
         textAlign: 'center',
         cursor: 'pointer'
     },
-    props => ({
+    (props: NotieButtonProps) => ({
         backgroundColor: props.level in colors ? colors[props.level] : '#444'
     })
 );
