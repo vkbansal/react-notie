@@ -1,35 +1,166 @@
 import * as React from 'react';
+import styled from 'react-emotion';
 
-import {
-    NotieActions,
-    NotieSettings,
-    NotieLevel,
-    notieAlert,
-    NotieCallback,
-    NotieEventDetails
-} from './actions';
-
-import { NotieContainer, NotieMessage, NotieChoices, NotieButton } from './components';
-
-export interface NotieState extends Pick<NotieSettings, 'message' | 'level'> {
-    okBtnText: string;
-    cancelBtnText: string;
-    position: 'top' | 'bottom';
+export enum NotieLevel {
+    INFO = 'INFO',
+    ERROR = 'ERROR',
+    SUCCESS = 'SUCCESS',
+    WARN = 'WARN',
+    FORCE = 'FORCE',
+    CONFIRM = 'CONFIRM'
 }
 
-const DEFAULT_STATE: NotieState = {
+const colors: Record<NotieLevel, string> = {
+    [NotieLevel.SUCCESS]: '#13ce66',
+    [NotieLevel.ERROR]: '#ff4949',
+    [NotieLevel.INFO]: '#20a0ff',
+    [NotieLevel.WARN]: '#f5be4b',
+    [NotieLevel.CONFIRM]: '#20a0ff',
+    [NotieLevel.FORCE]: '#20a0ff'
+};
+
+export const NOTIE_CLOSE_CLASS = `notie-${Math.random()
+    .toString(36)
+    .slice(2)}`;
+
+//#region styled_components
+export interface NotieContainerProps {
+    level: NotieLevel;
+}
+
+export const NotieContainer = styled('dialog')(
+    {
+        position: 'fixed',
+        width: '100%',
+        textAlign: 'center',
+        fontSize: '14px',
+        color: '#fff',
+        margin: '0 auto',
+        whiteSpace: 'nowrap',
+        border: 'none',
+        textOverflow: 'ellipsis',
+        left: 0,
+        top: 0,
+        padding: 0,
+        pointerEvents: 'none',
+        '&[open]': {
+            pointerEvents: 'auto'
+        }
+    },
+    (props: NotieContainerProps) => ({
+        backgroundColor: props.level in colors ? colors[props.level] : '#444'
+    })
+);
+
+NotieContainer.displayName = 'NotieContainer';
+
+export const NotieMessage = styled('div')({
+    padding: '20px'
+});
+
+NotieMessage.displayName = 'NotieMessage';
+
+export const NotieChoices = styled('div')({
+    display: 'flex',
+    width: '100%'
+});
+
+NotieChoices.displayName = 'NotieChoices';
+
+export interface NotieButtonProps {
+    level: NotieLevel;
+}
+
+export const NotieButton = styled('button')(
+    {
+        padding: '20px',
+        flexGrow: 1,
+        border: 'none',
+        textAlign: 'center',
+        cursor: 'pointer',
+        outline: 'none'
+    },
+    (props: NotieButtonProps) => ({
+        backgroundColor: props.level in colors ? colors[props.level] : '#444'
+    })
+);
+
+NotieButton.displayName = 'NotieButton';
+//#endregion
+
+/**
+ * Settings for Notie
+ */
+export interface NotieSettings {
+    /**
+     * The message to be shown
+     */
+    message: string;
+    /**
+     * The type of alert-box to shown
+     */
+    level: NotieLevel;
+    /**
+     * Text to be shown for 'OK' button
+     *
+     * @default 'OK'
+     */
+    okBtnText?: string;
+    /**
+     * Text to be shown for 'Cancel' button
+     *
+     * @default 'Cancel'
+     */
+    cancelBtnText?: string;
+    /**
+     * The time (in ms) after which the alert-box disappears
+     * @default 5000
+     */
+    ttl?: number;
+}
+
+export type NotieCallback = (...args: any[]) => void;
+
+export interface NotieContextAttributes extends NotieSettings {
+    success(message: string, ttl?: number): void;
+    error(message: string, ttl?: number): void;
+    warn(message: string, ttl?: number): void;
+    info(message: string, ttl?: number): void;
+    confirm(
+        message: string,
+        props?: Pick<NotieSettings, 'okBtnText' | 'cancelBtnText'>
+    ): Promise<unknown>;
+    force(
+        message: string,
+        props?: Pick<NotieSettings, 'okBtnText' | 'cancelBtnText'>
+    ): Promise<unknown>;
+}
+
+export const NotieContext = React.createContext<NotieContextAttributes>({
     message: '',
     level: NotieLevel.INFO,
-    position: 'top',
+    okBtnText: '',
+    cancelBtnText: '',
+    success: () => null,
+    error: () => null,
+    warn: () => null,
+    info: () => null,
+    confirm: async () => Promise.resolve(''),
+    force: async () => Promise.resolve('')
+});
+
+const DEFAULT_STATE: NotieSettings = {
+    message: '',
+    level: NotieLevel.INFO,
     okBtnText: 'OK',
     cancelBtnText: 'Cancel'
 };
 
 let alreadyLoaded = false;
 
-const DEFAULT_TIMEOUT = 5000;
+export const DEFAULT_TIMEOUT = 5000;
 
-export class Notie extends React.Component<any, NotieState> {
+export class Notie extends React.Component<any, NotieSettings> {
     private dialog: HTMLDialogElement | null = null;
     private timeout: number | null = null;
     private confirmResolve!: NotieCallback;
@@ -51,10 +182,6 @@ export class Notie extends React.Component<any, NotieState> {
         alreadyLoaded = true;
     }
 
-    componentDidMount() {
-        window.addEventListener(NotieActions.SHOW, this.showNotie);
-    }
-
     componentWillUnmount() {
         if (this.timeout) {
             clearTimeout(this.timeout);
@@ -62,22 +189,10 @@ export class Notie extends React.Component<any, NotieState> {
         }
 
         if (alreadyLoaded) alreadyLoaded = false;
-
-        window.removeEventListener(NotieActions.SHOW, this.showNotie);
     }
 
-    showNotie = (event: Event) => {
+    showNotie = (settings: NotieSettings) => {
         if (this.forced) return;
-
-        const settings: NotieEventDetails = (event as CustomEvent).detail;
-
-        if (settings.confirmReject && settings.confirmResolve) {
-            this.confirmReject = settings.confirmReject;
-            this.confirmResolve = settings.confirmResolve;
-        } else {
-            delete this.confirmReject;
-            delete this.confirmResolve;
-        }
 
         if (this.timeout) {
             clearTimeout(this.timeout);
@@ -86,7 +201,7 @@ export class Notie extends React.Component<any, NotieState> {
 
         if (this.dialog && this.dialog.open) {
             this.hideNotie(() => {
-                notieAlert(settings);
+                this.showNotie(settings);
             });
 
             return;
@@ -131,8 +246,8 @@ export class Notie extends React.Component<any, NotieState> {
 
         const a = this.dialog.animate(
             [
-                { transform: 'translate3d(0, 0, 0)', opacity: 1 },
-                { transform: 'translate3d(0, -106%, 0)', opacity: 0 }
+                { transform: 'translate3d(0, 0, 0)' },
+                { transform: 'translate3d(0, -106%, 0)' }
             ] as any[],
             {
                 duration: 300,
@@ -141,6 +256,7 @@ export class Notie extends React.Component<any, NotieState> {
         );
 
         a.onfinish = () => {
+            if (this.dialog) this.dialog.close();
             if (typeof callback === 'function') callback();
             this.setState(DEFAULT_STATE);
         };
@@ -177,35 +293,113 @@ export class Notie extends React.Component<any, NotieState> {
         return level === NotieLevel.CONFIRM || level === NotieLevel.FORCE;
     }
 
+    showSuccess: NotieContextAttributes['success'] = (message, ttl) => {
+        this.showNotie({
+            ...DEFAULT_STATE,
+            level: NotieLevel.SUCCESS,
+            message,
+            ttl
+        });
+    };
+
+    showError: NotieContextAttributes['error'] = (message, ttl) => {
+        this.showNotie({
+            ...DEFAULT_STATE,
+            level: NotieLevel.ERROR,
+            message,
+            ttl
+        });
+    };
+
+    showWarn: NotieContextAttributes['warn'] = (message, ttl) => {
+        this.showNotie({
+            ...DEFAULT_STATE,
+            level: NotieLevel.WARN,
+            message,
+            ttl
+        });
+    };
+
+    showInfo: NotieContextAttributes['info'] = (message, ttl) => {
+        this.showNotie({
+            ...DEFAULT_STATE,
+            level: NotieLevel.INFO,
+            message,
+            ttl
+        });
+    };
+
+    showConfirm: NotieContextAttributes['confirm'] = async (message, props) => {
+        // tslint:disable-next-line:no-inferred-empty-object-type
+        return new Promise(
+            (resolve, reject): void => {
+                this.confirmResolve = resolve;
+                this.confirmReject = reject;
+                this.showNotie({
+                    ...DEFAULT_STATE,
+                    level: NotieLevel.CONFIRM,
+                    ...props,
+                    message
+                });
+            }
+        );
+    };
+
+    showForce: NotieContextAttributes['force'] = async (message, props) => {
+        // tslint:disable-next-line:no-inferred-empty-object-type
+        return new Promise(
+            (resolve, reject): void => {
+                this.confirmResolve = resolve;
+                this.confirmReject = reject;
+                this.showNotie({
+                    ...DEFAULT_STATE,
+                    level: NotieLevel.FORCE,
+                    ...props,
+                    message
+                });
+            }
+        );
+    };
+
     render() {
-        const { message, level, position } = this.state;
+        const { message, level } = this.state;
 
         return (
-            <NotieContainer
-                innerRef={this.rootRef}
-                position={position}
-                level={level}
-                onClick={this.handleDismiss}
+            <NotieContext.Provider
+                value={{
+                    ...this.state,
+                    confirm: this.showConfirm,
+                    error: this.showError,
+                    info: this.showInfo,
+                    success: this.showSuccess,
+                    warn: this.showWarn,
+                    force: this.showForce
+                }}
             >
-                <NotieMessage>{message}</NotieMessage>
-                {this.forced && (
-                    <NotieChoices>
-                        <NotieButton
-                            level={
-                                level === NotieLevel.FORCE ? NotieLevel.ERROR : NotieLevel.SUCCESS
-                            }
-                            onClick={this.handleYes}
-                        >
-                            {this.state.okBtnText}
-                        </NotieButton>
-                        {level === NotieLevel.CONFIRM && (
-                            <NotieButton level={NotieLevel.ERROR} onClick={this.handleNo}>
-                                {this.state.cancelBtnText}
+                <NotieContainer innerRef={this.rootRef} level={level} onClick={this.handleDismiss}>
+                    <NotieMessage>{message}</NotieMessage>
+                    {this.forced && (
+                        <NotieChoices>
+                            <NotieButton
+                                level={
+                                    level === NotieLevel.FORCE
+                                        ? NotieLevel.ERROR
+                                        : NotieLevel.SUCCESS
+                                }
+                                onClick={this.handleYes}
+                            >
+                                {this.state.okBtnText}
                             </NotieButton>
-                        )}
-                    </NotieChoices>
-                )}
-            </NotieContainer>
+                            {level === NotieLevel.CONFIRM && (
+                                <NotieButton level={NotieLevel.ERROR} onClick={this.handleNo}>
+                                    {this.state.cancelBtnText}
+                                </NotieButton>
+                            )}
+                        </NotieChoices>
+                    )}
+                </NotieContainer>
+                {this.props.children}
+            </NotieContext.Provider>
         );
     }
 }

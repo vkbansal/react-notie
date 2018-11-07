@@ -8,6 +8,7 @@
         "module": "es6",
         "newLine": "LF",
         "moduleResolution": "node",
+        "esModuleInterop": true,
         "declaration": true,
         "target": "es6",
         "noUnusedLocals": true,

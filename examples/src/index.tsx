@@ -2,7 +2,9 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import { NotieExamples } from './NotieExamples';
+import { Notie } from 'react-notie';
+
+import { WithNotieExamples as NotieExamples } from './NotieExamples';
 
 interface AppState {
     ttl: number;
@@ -16,7 +18,11 @@ class App extends React.Component<{}, AppState> {
     };
 
     render() {
-        return <NotieExamples {...this.state} />;
+        return (
+            <Notie>
+                <NotieExamples />
+            </Notie>
+        );
     }
 }
 

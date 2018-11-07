@@ -1,61 +1,61 @@
 import * as React from 'react';
 
-import {
-    // notieAlert,
-    notieWarn,
-    notieSuccess,
-    notieError,
-    notieInfo,
-    notieConfirm,
-    notieForce,
-    Notie
-} from 'react-notie';
+import { withNotie, WithNotieProps } from 'react-notie';
 
-export class NotieExamples extends React.Component {
+export class NotieExamples extends React.Component<WithNotieProps> {
+    // static contextType = NotieContext;
+
+    // context!: NotieContextAttributes;
+
     handleSuccess = () => {
-        notieSuccess('Success!');
+        this.props.notie.success('Success!');
     };
 
     handleWarn = () => {
-        notieWarn('Warn!');
+        this.props.notie.warn('Warn!');
     };
 
     handleError = () => {
-        notieError('Error!');
+        this.props.notie.error('Error!');
     };
 
     handleInfo = () => {
-        notieInfo('Info!');
+        this.props.notie.info('Info!');
     };
 
     handleConfirm = () => {
-        notieConfirm('Are You sure?')
+        this.props.notie
+            .confirm('Are You sure?')
             .then(() => {
-                notieSuccess('You selected yes!');
+                this.props.notie.success('You selected yes!');
             })
             .catch(() => {
-                notieError('You selected no!');
+                this.props.notie.error('You selected no!');
             });
     };
 
     handleConfirmCustom = () => {
-        notieConfirm('Are You sure?', {
-            okBtnText: 'Hell Ya!',
-            cancelBtnText: 'Abort!'
-        })
+        this.props.notie
+            .confirm('Are You sure?', {
+                okBtnText: 'Yeah!',
+                cancelBtnText: 'Abort!'
+            })
             .then(() => {
-                notieSuccess('You selected yeah!');
+                this.props.notie.success('You selected yeah!');
             })
             .catch(() => {
-                notieError('You selected abort!');
+                this.props.notie.error('You selected abort!');
             });
     };
 
     handleForce = () => {
-        notieForce('You cannot do this');
+        this.props.notie.force('You cannot do this');
     };
 
     render() {
+        // tslint:disable-next-line
+        console.log(this.props.notie);
+
         return (
             <div>
                 <div>
@@ -71,7 +71,6 @@ export class NotieExamples extends React.Component {
                     <button className="button-info pure-button" onClick={this.handleInfo}>
                         Info
                     </button>
-
                     <button className="button-secondary pure-button" onClick={this.handleConfirm}>
                         Confirm
                     </button>
@@ -86,9 +85,9 @@ export class NotieExamples extends React.Component {
                         Confirm with custom button texts
                     </button>
                 </div>
-                <br />
-                <Notie />
             </div>
         );
     }
 }
+
+export const WithNotieExamples = withNotie<{}>(NotieExamples);

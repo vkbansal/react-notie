@@ -1,27 +1,12 @@
-import { Notie } from './Notie';
-import {
-    notieAlert,
-    notieSuccess,
-    notieError,
-    notieWarn,
-    notieConfirm,
-    notieInfo,
-    notieForce,
-    NotieSettings,
-    NotieActions,
-    NotieLevel
-} from './actions';
+import { Notie, NotieSettings, NotieContext, NotieContextAttributes, NotieLevel } from './Notie';
+import { withNotie, WithNotieProps } from './withNotie';
 
 export {
     Notie,
-    notieAlert,
-    notieSuccess,
-    notieError,
-    notieWarn,
-    notieConfirm,
-    notieInfo,
-    notieForce,
     NotieSettings,
-    NotieActions,
-    NotieLevel
+    NotieLevel,
+    withNotie,
+    WithNotieProps,
+    NotieContext,
+    NotieContextAttributes
 };

@@ -15,4 +15,18 @@ global.window.cancelAnimationFrame = jest.fn();
 const Enzyme = require('enzyme');
 const Adapter = require('enzyme-adapter-react-16');
 
+global.window.HTMLDialogElement.prototype.show = function() {};
+
+global.window.HTMLDialogElement.prototype.showModal = function() {
+    // this.setAttribute('open');
+};
+
+global.window.HTMLDialogElement.prototype.hide = function() {
+    // this.removeAttribute('open');
+};
+
+global.window.HTMLDialogElement.prototype.animate = function() {
+    return {};
+};
+
 Enzyme.configure({ adapter: new Adapter() });

@@ -45,8 +45,8 @@
     },
     "peerDependencies": {
         "emotion": "^9.0.0",
-        "react": "^16.0.0",
-        "react-dom": "^16.0.0",
+        "react": "^16.4.0",
+        "react-dom": "^16.4.0",
         "react-emotion": "^9.0.0"
     },
     "devDependencies": {
@@ -56,13 +56,16 @@
         "@types/react": "~16.4.16",
         "@types/react-dom": "~16.0.3",
         "cross-env": "~5.2.0",
+        "emotion": "^9.2.12",
         "enzyme": "~3.7.0",
         "enzyme-adapter-react-16": "~1.6.0",
         "enzyme-to-json": "~3.3.0",
         "jest": "~23.6.0",
+        "jest-emotion": "^9.2.11",
         "jsdom": "~12.2.0",
         "react": "~16.5.2",
         "react-dom": "~16.5.2",
+        "react-emotion": "^9.2.12",
         "rimraf": "~2.6.1",
         "ts-jest": "~23.10.4",
         "typescript": "~3.1.2"
@@ -83,7 +86,8 @@
             "^.+\\.tsx?$": "ts-jest"
         },
         "snapshotSerializers": [
-            "enzyme-to-json/serializer"
+            "enzyme-to-json/serializer",
+            "jest-emotion/serializer"
         ],
         "collectCoverageFrom": [
             "**/*.{ts,tsx}",
