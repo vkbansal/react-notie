@@ -376,6 +376,7 @@ export class Notie extends React.Component<any, NotieSettings> {
                     force: this.showForce
                 }}
             >
+                {this.props.children}
                 <NotieContainer innerRef={this.rootRef} level={level} onClick={this.handleDismiss}>
                     <NotieMessage>{message}</NotieMessage>
                     {this.forced && (
@@ -398,7 +399,6 @@ export class Notie extends React.Component<any, NotieSettings> {
                         </NotieChoices>
                     )}
                 </NotieContainer>
-                {this.props.children}
             </NotieContext.Provider>
         );
     }
