@@ -40,14 +40,11 @@
         "url": "https://github.com/vkbansal/react-notie/issues"
     },
     "homepage": "https://github.com/vkbansal/react-notie#readme",
-    "dependencies": {
-        "classnames": "~2.2.5"
-    },
+    "dependencies": {},
     "peerDependencies": {
-        "emotion": "^9.0.0",
+        "emotion": "^10.0.0",
         "react": "^16.4.0",
-        "react-dom": "^16.4.0",
-        "react-emotion": "^9.0.0"
+        "react-dom": "^16.4.0"
     },
     "devDependencies": {
         "@types/classnames": "~2.2.3",
@@ -65,7 +62,6 @@
         "jsdom": "~12.2.0",
         "react": "~16.5.2",
         "react-dom": "~16.5.2",
-        "react-emotion": "^9.2.12",
         "rimraf": "~2.6.1",
         "ts-jest": "~23.10.4",
         "typescript": "~3.1.2"
