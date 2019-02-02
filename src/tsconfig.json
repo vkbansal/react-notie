@@ -14,5 +14,5 @@
         "noUnusedLocals": true,
         "noUnusedParameters": true
     },
-    "exclude": ["./Notie.test.tsx"]
+    "exclude": ["./__tests__/**"]
 }

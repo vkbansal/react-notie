@@ -1,10 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Notie /> Error message 1`] = `
-.emotion-0 {
-  padding: 20px;
-}
-
 .emotion-1 {
   position: fixed;
   width: 100%;
@@ -19,40 +15,36 @@ exports[`<Notie /> Error message 1`] = `
   top: 0;
   padding: 0;
   pointer-events: none;
-  background-color: #ff4949;
 }
 
 .emotion-1[open] {
   pointer-events: auto;
 }
 
+.emotion-0 {
+  padding: 20px;
+}
+
 <Notie>
-  <NotieContainer
-    innerRef={[Function]}
-    level="ERROR"
+  <dialog
+    className="emotion-1"
     onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#ff4949",
+      }
+    }
   >
-    <dialog
-      className="emotion-1"
-      onClick={[Function]}
+    <div
+      className="emotion-0"
     >
-      <NotieMessage>
-        <div
-          className="emotion-0"
-        >
-          Error!
-        </div>
-      </NotieMessage>
-    </dialog>
-  </NotieContainer>
+      Error!
+    </div>
+  </dialog>
 </Notie>
 `;
 
 exports[`<Notie /> Error message 2`] = `
-.emotion-0 {
-  padding: 20px;
-}
-
 .emotion-1 {
   position: fixed;
   width: 100%;
@@ -67,32 +59,32 @@ exports[`<Notie /> Error message 2`] = `
   top: 0;
   padding: 0;
   pointer-events: none;
-  background-color: #ff4949;
 }
 
 .emotion-1[open] {
   pointer-events: auto;
 }
 
+.emotion-0 {
+  padding: 20px;
+}
+
 <Notie>
-  <NotieContainer
-    innerRef={[Function]}
-    level="ERROR"
+  <dialog
+    className="emotion-1"
     onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#ff4949",
+      }
+    }
   >
-    <dialog
-      className="emotion-1"
-      onClick={[Function]}
+    <div
+      className="emotion-0"
     >
-      <NotieMessage>
-        <div
-          className="emotion-0"
-        >
-          Error!
-        </div>
-      </NotieMessage>
-    </dialog>
-  </NotieContainer>
+      Error!
+    </div>
+  </dialog>
 </Notie>
 `;
 
@@ -111,7 +103,6 @@ exports[`<Notie /> info message 1`] = `
   top: 0;
   padding: 0;
   pointer-events: none;
-  background-color: #20a0ff;
 }
 
 .emotion-1[open] {
@@ -123,24 +114,21 @@ exports[`<Notie /> info message 1`] = `
 }
 
 <Notie>
-  <NotieContainer
-    innerRef={[Function]}
-    level="INFO"
+  <dialog
+    className="emotion-1"
     onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#20a0ff",
+      }
+    }
   >
-    <dialog
-      className="emotion-1"
-      onClick={[Function]}
+    <div
+      className="emotion-0"
     >
-      <NotieMessage>
-        <div
-          className="emotion-0"
-        >
-          Info!
-        </div>
-      </NotieMessage>
-    </dialog>
-  </NotieContainer>
+      Info!
+    </div>
+  </dialog>
 </Notie>
 `;
 
@@ -159,7 +147,6 @@ exports[`<Notie /> info message 2`] = `
   top: 0;
   padding: 0;
   pointer-events: none;
-  background-color: #20a0ff;
 }
 
 .emotion-1[open] {
@@ -171,24 +158,21 @@ exports[`<Notie /> info message 2`] = `
 }
 
 <Notie>
-  <NotieContainer
-    innerRef={[Function]}
-    level="INFO"
+  <dialog
+    className="emotion-1"
     onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#20a0ff",
+      }
+    }
   >
-    <dialog
-      className="emotion-1"
-      onClick={[Function]}
+    <div
+      className="emotion-0"
     >
-      <NotieMessage>
-        <div
-          className="emotion-0"
-        >
-          Info!
-        </div>
-      </NotieMessage>
-    </dialog>
-  </NotieContainer>
+      Info!
+    </div>
+  </dialog>
 </Notie>
 `;
 
@@ -207,7 +191,6 @@ exports[`<Notie /> initial render 1`] = `
   top: 0;
   padding: 0;
   pointer-events: none;
-  background-color: #20a0ff;
 }
 
 .emotion-1[open] {
@@ -219,30 +202,23 @@ exports[`<Notie /> initial render 1`] = `
 }
 
 <Notie>
-  <NotieContainer
-    innerRef={[Function]}
-    level="INFO"
+  <dialog
+    className="emotion-1"
     onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#20a0ff",
+      }
+    }
   >
-    <dialog
-      className="emotion-1"
-      onClick={[Function]}
-    >
-      <NotieMessage>
-        <div
-          className="emotion-0"
-        />
-      </NotieMessage>
-    </dialog>
-  </NotieContainer>
+    <div
+      className="emotion-0"
+    />
+  </dialog>
 </Notie>
 `;
 
 exports[`<Notie /> success message 1`] = `
-.emotion-0 {
-  padding: 20px;
-}
-
 .emotion-1 {
   position: fixed;
   width: 100%;
@@ -257,40 +233,36 @@ exports[`<Notie /> success message 1`] = `
   top: 0;
   padding: 0;
   pointer-events: none;
-  background-color: #13ce66;
 }
 
 .emotion-1[open] {
   pointer-events: auto;
 }
 
+.emotion-0 {
+  padding: 20px;
+}
+
 <Notie>
-  <NotieContainer
-    innerRef={[Function]}
-    level="SUCCESS"
+  <dialog
+    className="emotion-1"
     onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#13ce66",
+      }
+    }
   >
-    <dialog
-      className="emotion-1"
-      onClick={[Function]}
+    <div
+      className="emotion-0"
     >
-      <NotieMessage>
-        <div
-          className="emotion-0"
-        >
-          Success!
-        </div>
-      </NotieMessage>
-    </dialog>
-  </NotieContainer>
+      Success!
+    </div>
+  </dialog>
 </Notie>
 `;
 
 exports[`<Notie /> success message 2`] = `
-.emotion-0 {
-  padding: 20px;
-}
-
 .emotion-1 {
   position: fixed;
   width: 100%;
@@ -305,40 +277,36 @@ exports[`<Notie /> success message 2`] = `
   top: 0;
   padding: 0;
   pointer-events: none;
-  background-color: #13ce66;
 }
 
 .emotion-1[open] {
   pointer-events: auto;
 }
 
+.emotion-0 {
+  padding: 20px;
+}
+
 <Notie>
-  <NotieContainer
-    innerRef={[Function]}
-    level="SUCCESS"
+  <dialog
+    className="emotion-1"
     onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#13ce66",
+      }
+    }
   >
-    <dialog
-      className="emotion-1"
-      onClick={[Function]}
+    <div
+      className="emotion-0"
     >
-      <NotieMessage>
-        <div
-          className="emotion-0"
-        >
-          Success!
-        </div>
-      </NotieMessage>
-    </dialog>
-  </NotieContainer>
+      Success!
+    </div>
+  </dialog>
 </Notie>
 `;
 
 exports[`<Notie /> warn message 1`] = `
-.emotion-0 {
-  padding: 20px;
-}
-
 .emotion-1 {
   position: fixed;
   width: 100%;
@@ -353,40 +321,36 @@ exports[`<Notie /> warn message 1`] = `
   top: 0;
   padding: 0;
   pointer-events: none;
-  background-color: #f5be4b;
 }
 
 .emotion-1[open] {
   pointer-events: auto;
 }
 
+.emotion-0 {
+  padding: 20px;
+}
+
 <Notie>
-  <NotieContainer
-    innerRef={[Function]}
-    level="WARN"
+  <dialog
+    className="emotion-1"
     onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#f5be4b",
+      }
+    }
   >
-    <dialog
-      className="emotion-1"
-      onClick={[Function]}
+    <div
+      className="emotion-0"
     >
-      <NotieMessage>
-        <div
-          className="emotion-0"
-        >
-          Warn!
-        </div>
-      </NotieMessage>
-    </dialog>
-  </NotieContainer>
+      Warn!
+    </div>
+  </dialog>
 </Notie>
 `;
 
 exports[`<Notie /> warn message 2`] = `
-.emotion-0 {
-  padding: 20px;
-}
-
 .emotion-1 {
   position: fixed;
   width: 100%;
@@ -401,31 +365,31 @@ exports[`<Notie /> warn message 2`] = `
   top: 0;
   padding: 0;
   pointer-events: none;
-  background-color: #f5be4b;
 }
 
 .emotion-1[open] {
   pointer-events: auto;
 }
 
+.emotion-0 {
+  padding: 20px;
+}
+
 <Notie>
-  <NotieContainer
-    innerRef={[Function]}
-    level="WARN"
+  <dialog
+    className="emotion-1"
     onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#f5be4b",
+      }
+    }
   >
-    <dialog
-      className="emotion-1"
-      onClick={[Function]}
+    <div
+      className="emotion-0"
     >
-      <NotieMessage>
-        <div
-          className="emotion-0"
-        >
-          Warn!
-        </div>
-      </NotieMessage>
-    </dialog>
-  </NotieContainer>
+      Warn!
+    </div>
+  </dialog>
 </Notie>
 `;

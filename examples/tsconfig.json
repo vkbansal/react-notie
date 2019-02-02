@@ -1,20 +1,30 @@
 {
-    "compilerOptions": {
-        "outDir": "build/dist",
-        "module": "esnext",
-        "target": "es6",
-        "lib": ["es6", "dom"],
-        "jsx": "preserve",
-        "moduleResolution": "node",
-        "strict": true,
-        "allowJs": true,
-        "skipLibCheck": false,
-        "esModuleInterop": true,
-        "allowSyntheticDefaultImports": true,
-        "forceConsistentCasingInFileNames": true,
-        "resolveJsonModule": true,
-        "isolatedModules": true,
-        "noEmit": true
-    },
-    "exclude": ["node_modules", "build", "scripts"]
+  "compilerOptions": {
+    "outDir": "build/dist",
+    "module": "esnext",
+    "target": "es6",
+    "lib": [
+      "es6",
+      "dom"
+    ],
+    "jsx": "preserve",
+    "moduleResolution": "node",
+    "strict": true,
+    "allowJs": true,
+    "skipLibCheck": false,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true
+  },
+  "exclude": [
+    "node_modules",
+    "build",
+    "scripts"
+  ],
+  "include": [
+    "src"
+  ]
 }

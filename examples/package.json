@@ -4,15 +4,18 @@
   "version": "0.0.1",
   "private": true,
   "main": "index.tsx",
+  "resolutions": {
+    "@types/react": "16.7.22"
+},
   "dependencies": {
-    "@types/react": "~16.4.14",
-    "@types/react-dom": "~16.0.7",
-    "react": "~16.5.1",
-    "react-dom": "~16.5.1",
+    "@types/react": "~16.7.22",
+    "@types/react-dom": "~16.0.11",
+    "react": "~16.7.0",
+    "react-dom": "~16.7.0",
     "react-notie": "2.0.0-alpha.3",
-    "react-scripts": "^2.1.1",
+    "react-scripts": "~2.1.2",
     "tslint-vkbansal": "gist:c4922663993ada71f43352107f86c4fd",
-    "typescript": "~3.1.2"
+    "typescript": "~3.2.4"
   },
   "scripts": {
     "start": "react-scripts start",

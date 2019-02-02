@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styled from 'react-emotion';
+import { css } from 'emotion';
 
 export enum NotieLevel {
     INFO = 'INFO',
@@ -19,73 +19,43 @@ const colors: Record<NotieLevel, string> = {
     [NotieLevel.FORCE]: '#20a0ff'
 };
 
-export const NOTIE_CLOSE_CLASS = `notie-${Math.random()
-    .toString(36)
-    .slice(2)}`;
-
 //#region styled_components
-export interface NotieContainerProps {
-    level: NotieLevel;
-}
+export const notieContainer = css({
+    position: 'fixed',
+    width: '100%',
+    textAlign: 'center',
+    fontSize: '14px',
+    color: '#fff',
+    margin: '0 auto',
+    whiteSpace: 'nowrap',
+    border: 'none',
+    textOverflow: 'ellipsis',
+    left: 0,
+    top: 0,
+    padding: 0,
+    pointerEvents: 'none',
+    '&[open]': {
+        pointerEvents: 'auto'
+    }
+});
 
-export const NotieContainer = styled('dialog')(
-    {
-        position: 'fixed',
-        width: '100%',
-        textAlign: 'center',
-        fontSize: '14px',
-        color: '#fff',
-        margin: '0 auto',
-        whiteSpace: 'nowrap',
-        border: 'none',
-        textOverflow: 'ellipsis',
-        left: 0,
-        top: 0,
-        padding: 0,
-        pointerEvents: 'none',
-        '&[open]': {
-            pointerEvents: 'auto'
-        }
-    },
-    (props: NotieContainerProps) => ({
-        backgroundColor: props.level in colors ? colors[props.level] : '#444'
-    })
-);
-
-NotieContainer.displayName = 'NotieContainer';
-
-export const NotieMessage = styled('div')({
+export const notieMessage = css({
     padding: '20px'
 });
 
-NotieMessage.displayName = 'NotieMessage';
-
-export const NotieChoices = styled('div')({
+export const notieChoices = css({
     display: 'flex',
     width: '100%'
 });
 
-NotieChoices.displayName = 'NotieChoices';
-
-export interface NotieButtonProps {
-    level: NotieLevel;
-}
-
-export const NotieButton = styled('button')(
-    {
-        padding: '20px',
-        flexGrow: 1,
-        border: 'none',
-        textAlign: 'center',
-        cursor: 'pointer',
-        outline: 'none'
-    },
-    (props: NotieButtonProps) => ({
-        backgroundColor: props.level in colors ? colors[props.level] : '#444'
-    })
-);
-
-NotieButton.displayName = 'NotieButton';
+export const notieButton = css({
+    padding: '20px',
+    flexGrow: 1,
+    border: 'none',
+    textAlign: 'center',
+    cursor: 'pointer',
+    outline: 'none'
+});
 //#endregion
 
 /**
@@ -377,28 +347,45 @@ export class Notie extends React.Component<any, NotieSettings> {
                 }}
             >
                 {this.props.children}
-                <NotieContainer innerRef={this.rootRef} level={level} onClick={this.handleDismiss}>
-                    <NotieMessage>{message}</NotieMessage>
+                <dialog
+                    className={notieContainer}
+                    ref={this.rootRef}
+                    style={{
+                        backgroundColor: level in colors ? colors[level] : '#444'
+                    }}
+                    onClick={this.handleDismiss}
+                >
+                    <div className={notieMessage}>{message}</div>
                     {this.forced && (
-                        <NotieChoices>
-                            <NotieButton
-                                level={
-                                    level === NotieLevel.FORCE
-                                        ? NotieLevel.ERROR
-                                        : NotieLevel.SUCCESS
-                                }
+                        <div className={notieChoices}>
+                            <button
+                                className={notieButton}
+                                style={{
+                                    backgroundColor:
+                                        colors[
+                                            level === NotieLevel.FORCE
+                                                ? NotieLevel.ERROR
+                                                : NotieLevel.SUCCESS
+                                        ]
+                                }}
                                 onClick={this.handleYes}
                             >
                                 {this.state.okBtnText}
-                            </NotieButton>
+                            </button>
                             {level === NotieLevel.CONFIRM && (
-                                <NotieButton level={NotieLevel.ERROR} onClick={this.handleNo}>
+                                <button
+                                    className={notieButton}
+                                    style={{
+                                        backgroundColor: colors[NotieLevel.ERROR]
+                                    }}
+                                    onClick={this.handleNo}
+                                >
                                     {this.state.cancelBtnText}
-                                </NotieButton>
+                                </button>
                             )}
-                        </NotieChoices>
+                        </div>
                     )}
-                </NotieContainer>
+                </dialog>
             </NotieContext.Provider>
         );
     }

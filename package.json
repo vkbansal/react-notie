@@ -4,6 +4,9 @@
         "src",
         "examples"
     ],
+    "resolutions": {
+        "@types/react": "16.7.22"
+    },
     "dependencies": {
         "@types/react": "~16.7.22",
         "@types/react-dom": "~16.0.11",
