@@ -1,12 +1,3 @@
-import { Notie, NotieSettings, NotieContext, NotieContextAttributes, NotieLevel } from './Notie';
-import { withNotie, WithNotieProps } from './withNotie';
+import { Notie, NotieSettings, NotieLevel } from './Notie';
 
-export {
-    Notie,
-    NotieSettings,
-    NotieLevel,
-    withNotie,
-    WithNotieProps,
-    NotieContext,
-    NotieContextAttributes
-};
+export { Notie, NotieSettings, NotieLevel };

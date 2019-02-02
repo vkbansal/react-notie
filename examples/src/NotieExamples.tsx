@@ -1,61 +1,52 @@
 import * as React from 'react';
 
-import { withNotie, WithNotieProps } from 'react-notie';
+import { Notie } from 'react-notie';
 
-export class NotieExamples extends React.Component<WithNotieProps> {
-    // static contextType = NotieContext;
-
-    // context!: NotieContextAttributes;
-
+export class NotieExamples extends React.Component {
     handleSuccess = () => {
-        this.props.notie.success('Success!');
+        Notie.success('Success!');
     };
 
     handleWarn = () => {
-        this.props.notie.warn('Warn!');
+        Notie.warn('Warn!');
     };
 
     handleError = () => {
-        this.props.notie.error('Error!');
+        Notie.error('Error!');
     };
 
     handleInfo = () => {
-        this.props.notie.info('Info!');
+        Notie.info('Info!');
     };
 
     handleConfirm = () => {
-        this.props.notie
-            .confirm('Are You sure?')
+        Notie.confirm('Are You sure?')
             .then(() => {
-                this.props.notie.success('You selected yes!');
+                Notie.success('You selected yes!');
             })
             .catch(() => {
-                this.props.notie.error('You selected no!');
+                Notie.error('You selected no!');
             });
     };
 
     handleConfirmCustom = () => {
-        this.props.notie
-            .confirm('Are You sure?', {
-                okBtnText: 'Yeah!',
-                cancelBtnText: 'Abort!'
-            })
+        Notie.confirm('Are You sure?', {
+            okBtnText: 'Yeah!',
+            cancelBtnText: 'Abort!'
+        })
             .then(() => {
-                this.props.notie.success('You selected yeah!');
+                Notie.success('You selected yeah!');
             })
             .catch(() => {
-                this.props.notie.error('You selected abort!');
+                Notie.error('You selected abort!');
             });
     };
 
     handleForce = () => {
-        this.props.notie.force('You cannot do this');
+        Notie.force('You cannot do this');
     };
 
     render() {
-        // tslint:disable-next-line
-        console.log(this.props.notie);
-
         return (
             <div>
                 <div>
@@ -89,5 +80,3 @@ export class NotieExamples extends React.Component<WithNotieProps> {
         );
     }
 }
-
-export const WithNotieExamples = withNotie<{}>(NotieExamples);
