@@ -12,7 +12,7 @@
     "@types/react-dom": "~16.0.11",
     "react": "~16.7.0",
     "react-dom": "~16.7.0",
-    "react-notie": "2.0.0-alpha.3",
+    "react-notie": "2.0.0-alpha.4",
     "react-scripts": "~2.1.2",
     "tslint-vkbansal": "gist:c4922663993ada71f43352107f86c4fd",
     "typescript": "~3.2.4"
