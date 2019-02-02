@@ -91,33 +91,20 @@ export interface NotieSettings {
 
 export type NotieCallback = (...args: any[]) => void;
 
-export interface NotieContextAttributes extends NotieSettings {
-    success(message: string, ttl?: number): void;
-    error(message: string, ttl?: number): void;
-    warn(message: string, ttl?: number): void;
-    info(message: string, ttl?: number): void;
-    confirm(
-        message: string,
-        props?: Pick<NotieSettings, 'okBtnText' | 'cancelBtnText'>
-    ): Promise<unknown>;
-    force(
-        message: string,
-        props?: Pick<NotieSettings, 'okBtnText' | 'cancelBtnText'>
-    ): Promise<unknown>;
-}
-
-export const NotieContext = React.createContext<NotieContextAttributes>({
-    message: '',
-    level: NotieLevel.INFO,
-    okBtnText: '',
-    cancelBtnText: '',
-    success: () => null,
-    error: () => null,
-    warn: () => null,
-    info: () => null,
-    confirm: async () => Promise.resolve(''),
-    force: async () => Promise.resolve('')
-});
+// export interface NotieContextAttributes extends NotieSettings {
+//     success(message: string, ttl?: number): void;
+//     error(message: string, ttl?: number): void;
+//     warn(message: string, ttl?: number): void;
+//     info(message: string, ttl?: number): void;
+// confirm(
+//     message: string,
+//     props?: Pick<NotieSettings, 'okBtnText' | 'cancelBtnText'>
+// ): Promise<unknown>;
+//     force(
+//         message: string,
+//         props?: Pick<NotieSettings, 'okBtnText' | 'cancelBtnText'>
+//     ): Promise<unknown>;
+// }
 
 const DEFAULT_STATE: NotieSettings = {
     message: '',
@@ -136,6 +123,37 @@ export class Notie extends React.Component<any, NotieSettings> {
     private confirmResolve!: NotieCallback;
     private confirmReject!: NotieCallback;
 
+    static __singletonRef: Notie;
+
+    static success(message: string, ttl?: number) {
+        return Notie.__singletonRef.showSuccess(message, ttl);
+    }
+
+    static error(message: string, ttl?: number) {
+        return Notie.__singletonRef.showError(message, ttl);
+    }
+
+    static warn(message: string, ttl?: number) {
+        return Notie.__singletonRef.showWarn(message, ttl);
+    }
+
+    static info(message: string, ttl?: number) {
+        return Notie.__singletonRef.showInfo(message, ttl);
+    }
+
+    static confirm(
+        message: string,
+        props?: Pick<NotieSettings, 'okBtnText' | 'cancelBtnText'>
+    ): Promise<unknown> {
+        return Notie.__singletonRef.showConfirm(message, props);
+    }
+    static force(
+        message: string,
+        props?: Pick<NotieSettings, 'okBtnText' | 'cancelBtnText'>
+    ): Promise<unknown> {
+        return Notie.__singletonRef.showForce(message, props);
+    }
+
     constructor(props: any) {
         super(props);
 
@@ -150,6 +168,8 @@ export class Notie extends React.Component<any, NotieSettings> {
         }
 
         alreadyLoaded = true;
+
+        Notie.__singletonRef = this;
     }
 
     componentWillUnmount() {
@@ -263,7 +283,7 @@ export class Notie extends React.Component<any, NotieSettings> {
         return level === NotieLevel.CONFIRM || level === NotieLevel.FORCE;
     }
 
-    showSuccess: NotieContextAttributes['success'] = (message, ttl) => {
+    showSuccess = (message: string, ttl?: number) => {
         this.showNotie({
             ...DEFAULT_STATE,
             level: NotieLevel.SUCCESS,
@@ -272,7 +292,7 @@ export class Notie extends React.Component<any, NotieSettings> {
         });
     };
 
-    showError: NotieContextAttributes['error'] = (message, ttl) => {
+    showError = (message: string, ttl?: number): void => {
         this.showNotie({
             ...DEFAULT_STATE,
             level: NotieLevel.ERROR,
@@ -281,7 +301,7 @@ export class Notie extends React.Component<any, NotieSettings> {
         });
     };
 
-    showWarn: NotieContextAttributes['warn'] = (message, ttl) => {
+    showWarn = (message: string, ttl?: number): void => {
         this.showNotie({
             ...DEFAULT_STATE,
             level: NotieLevel.WARN,
@@ -290,7 +310,7 @@ export class Notie extends React.Component<any, NotieSettings> {
         });
     };
 
-    showInfo: NotieContextAttributes['info'] = (message, ttl) => {
+    showInfo = (message: string, ttl?: number): void => {
         this.showNotie({
             ...DEFAULT_STATE,
             level: NotieLevel.INFO,
@@ -299,7 +319,10 @@ export class Notie extends React.Component<any, NotieSettings> {
         });
     };
 
-    showConfirm: NotieContextAttributes['confirm'] = async (message, props) => {
+    showConfirm = async (
+        message: string,
+        props?: Pick<NotieSettings, 'okBtnText' | 'cancelBtnText'>
+    ): Promise<unknown> => {
         // tslint:disable-next-line:no-inferred-empty-object-type
         return new Promise(
             (resolve, reject): void => {
@@ -315,7 +338,10 @@ export class Notie extends React.Component<any, NotieSettings> {
         );
     };
 
-    showForce: NotieContextAttributes['force'] = async (message, props) => {
+    showForce = async (
+        message: string,
+        props?: Pick<NotieSettings, 'okBtnText' | 'cancelBtnText'>
+    ): Promise<unknown> => {
         // tslint:disable-next-line:no-inferred-empty-object-type
         return new Promise(
             (resolve, reject): void => {
@@ -335,58 +361,45 @@ export class Notie extends React.Component<any, NotieSettings> {
         const { message, level } = this.state;
 
         return (
-            <NotieContext.Provider
-                value={{
-                    ...this.state,
-                    confirm: this.showConfirm,
-                    error: this.showError,
-                    info: this.showInfo,
-                    success: this.showSuccess,
-                    warn: this.showWarn,
-                    force: this.showForce
+            <dialog
+                className={notieContainer}
+                ref={this.rootRef}
+                style={{
+                    backgroundColor: level in colors ? colors[level] : '#444'
                 }}
+                onClick={this.handleDismiss}
             >
-                {this.props.children}
-                <dialog
-                    className={notieContainer}
-                    ref={this.rootRef}
-                    style={{
-                        backgroundColor: level in colors ? colors[level] : '#444'
-                    }}
-                    onClick={this.handleDismiss}
-                >
-                    <div className={notieMessage}>{message}</div>
-                    {this.forced && (
-                        <div className={notieChoices}>
+                <div className={notieMessage}>{message}</div>
+                {this.forced && (
+                    <div className={notieChoices}>
+                        <button
+                            className={notieButton}
+                            style={{
+                                backgroundColor:
+                                    colors[
+                                        level === NotieLevel.FORCE
+                                            ? NotieLevel.ERROR
+                                            : NotieLevel.SUCCESS
+                                    ]
+                            }}
+                            onClick={this.handleYes}
+                        >
+                            {this.state.okBtnText}
+                        </button>
+                        {level === NotieLevel.CONFIRM && (
                             <button
                                 className={notieButton}
                                 style={{
-                                    backgroundColor:
-                                        colors[
-                                            level === NotieLevel.FORCE
-                                                ? NotieLevel.ERROR
-                                                : NotieLevel.SUCCESS
-                                        ]
+                                    backgroundColor: colors[NotieLevel.ERROR]
                                 }}
-                                onClick={this.handleYes}
+                                onClick={this.handleNo}
                             >
-                                {this.state.okBtnText}
+                                {this.state.cancelBtnText}
                             </button>
-                            {level === NotieLevel.CONFIRM && (
-                                <button
-                                    className={notieButton}
-                                    style={{
-                                        backgroundColor: colors[NotieLevel.ERROR]
-                                    }}
-                                    onClick={this.handleNo}
-                                >
-                                    {this.state.cancelBtnText}
-                                </button>
-                            )}
-                        </div>
-                    )}
-                </dialog>
-            </NotieContext.Provider>
+                        )}
+                    </div>
+                )}
+            </dialog>
         );
     }
 }

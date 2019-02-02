@@ -26,7 +26,7 @@ describe('<Notie />', () => {
     test('success message', () => {
         if (!provider) return;
 
-        provider.instance().showSuccess('Success!');
+        Notie.success('Success!');
         provider.update();
         expect(provider).toMatchSnapshot();
         // expect(provider.find(notieContainer).prop('level')).toBe(NotieLevel.SUCCESS);
@@ -38,7 +38,7 @@ describe('<Notie />', () => {
     test('warn message', () => {
         if (!provider) return;
 
-        provider.instance().showWarn('Warn!');
+        Notie.warn('Warn!');
         provider.update();
         expect(provider).toMatchSnapshot();
         // expect(provider.find(notieContainer).prop('level')).toBe(NotieLevel.WARN);
@@ -50,7 +50,7 @@ describe('<Notie />', () => {
     test('Error message', () => {
         if (!provider) return;
 
-        provider.instance().showError('Error!');
+        Notie.error('Error!');
         provider.update();
         expect(provider).toMatchSnapshot();
         // expect(provider.find('notieContainer').prop('level')).toBe(NotieLevel.ERROR);
@@ -62,7 +62,7 @@ describe('<Notie />', () => {
     test('info message', () => {
         if (!provider) return;
 
-        provider.instance().showInfo('Info!');
+        Notie.info('Info!');
         provider.update();
         expect(provider).toMatchSnapshot();
         // expect(provider.find(notieContainer).prop('level')).toBe(NotieLevel.INFO);
