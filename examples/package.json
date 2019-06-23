@@ -3,29 +3,27 @@
   "description": "Examples for react-notie",
   "version": "0.0.1",
   "private": true,
-  "main": "index.tsx",
   "resolutions": {
-    "@types/react": "16.7.22"
-},
+    "@types/react": "~16.8.22",
+    "caniuse-lite": "~1.0.30000976",
+    "parcel-bundler": "~1.12.3"
+  },
   "dependencies": {
-    "@types/react": "~16.7.22",
-    "@types/react-dom": "~16.0.11",
-    "react": "~16.7.0",
-    "react-dom": "~16.7.0",
+    "@types/react": "~16.8.22",
+    "@types/react-dom": "~16.8.4",
+    "react": "~16.8.6",
+    "react-dom": "~16.8.6",
     "react-notie": "2.0.0-alpha.5",
-    "react-scripts": "~2.1.2",
     "tslint-vkbansal": "gist:c4922663993ada71f43352107f86c4fd",
-    "typescript": "~3.2.4"
+    "typescript": "~3.5.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "eject": "react-scripts eject"
+    "start": "parcel start index.html",
+    "build": "parcel build index.html"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "devDependencies": {
+    "browserslist": "~4.6.3",
+    "caniuse-lite": "~1.0.30000976",
+    "parcel-bundler": "~1.12.3"
+  }
 }
